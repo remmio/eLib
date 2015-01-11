@@ -9,7 +9,7 @@ namespace CLib
     /// <summary>
     /// 
     /// </summary>
-    public static class ImageUtils
+    public static class ImagesHelper
     {
         
         #region Image To Bytes
@@ -71,14 +71,19 @@ namespace CLib
         /// <returns></returns>
         public static byte[] BitmapToByte ( string imagePath )
         {
-            FileStream fs = new FileStream (imagePath, FileMode.Open, FileAccess.Read);
-            byte[] imgBytes = new byte[fs.Length];
+            var fs = new FileStream (imagePath, FileMode.Open, FileAccess.Read);
+            var imgBytes = new byte[fs.Length];
             fs.Read (imgBytes, 0, Convert.ToInt32 (fs.Length));
-            string encodeData = Convert.ToBase64String (imgBytes, Base64FormattingOptions.InsertLineBreaks);
+            var encodeData = Convert.ToBase64String (imgBytes, Base64FormattingOptions.InsertLineBreaks);
             return new[] { Byte.Parse (encodeData) };
         }
 
-        private static byte[] BitmapArrayFromFile ( string imageFilePath )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageFilePath"></param>
+        /// <returns></returns>
+        public static byte[] BitmapArrayFromFile ( string imageFilePath )
         {
             if(!File.Exists (imageFilePath)) return null;
 
