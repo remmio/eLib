@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CLib
+namespace CLib.FilesHelper
 {
     /// <summary>
     /// 
     /// </summary>
-    public static class Res
+    public static class RessourceHelper
     {
         /// <summary>
         /// 

@@ -8,14 +8,15 @@ namespace CLib
     /// <summary>
     /// RandomHelper
     /// </summary>
-    class RandomHelper
+    public class RandomHelper
     {
+
         /// <summary>
         /// Random Caracteres
         /// </summary>
         /// <param name="numberOfCharsToGenerate">Nombre de Caracteres</param>
         /// <returns></returns>
-        public static string GetLetters(int numberOfCharsToGenerate)
+        public static string GetRandLetters(int numberOfCharsToGenerate)
         {
             var random = new Random();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -30,6 +31,22 @@ namespace CLib
         }
 
 
+        /// <summary>
+        /// Random Numbers
+        /// </summary>
+        /// <param name="nomberOfNumToGenerate"></param>
+        /// <returns></returns>
+        public static string GetRandNum(int nomberOfNumToGenerate)
+        {
+            var x = new Random();
+            var idOut = string.Empty;
+
+            for (var i = 0; i < nomberOfNumToGenerate; i++)
+            {
+                idOut = idOut + x.Next(1, 9);
+            }
+            return idOut;
+        }
 
 
 

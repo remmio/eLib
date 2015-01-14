@@ -5,7 +5,7 @@ using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Threading;
 
-namespace CLib
+namespace CLib.Program
 {
     /// <summary>
     /// 
