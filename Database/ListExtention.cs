@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 
-namespace CLib
+namespace CLib.Database
 {
     /// <summary>
     /// 
