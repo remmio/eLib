@@ -64,6 +64,7 @@
     <Compile Include="FilesHelper\RessourceHelper.cs" />
     <Compile Include="Program\SingletonApplicationEnforcer.cs" />
     <Compile Include="Snip.cs" />
+    <Compile Include="TimesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings.ico" />
