@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 
@@ -10,6 +12,30 @@ namespace CLib
     /// </summary>
     public class RandomHelper
     {
+        private static readonly object RandomLock = new object();
+        // ReSharper disable once InconsistentNaming
+        private static readonly Random random = new Random();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static int Random(int max)
+        {
+            lock (RandomLock)
+            {
+                return random.Next(max + 1);
+            }
+        }
+
+        public static int Random(int min, int max)
+        {
+            lock (RandomLock)
+            {
+                return random.Next(min, max + 1);
+            }
+        }
 
         /// <summary>
         /// Random Caracteres
@@ -30,7 +56,6 @@ namespace CLib
             return sb.ToString();
         }
 
-
         /// <summary>
         /// Random Numbers
         /// </summary>
@@ -48,11 +73,40 @@ namespace CLib
             return idOut;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static string GetUniqueID()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
 
-
-
-
-
-
+        public static string GetRandomKey(int length = 5, int count = 3, char separator = '-')
+        {
+            return Enumerable.Range(1, (length + 1) * count - 1).Aggregate("", (x, index) => x += index % (length + 1) == 0 ? separator : GetRandomChar(FilesHelper.FilesHelper.Alphanumeric));
+        }
+       
+        public static char GetRandomChar(string chars)
+        {
+            return chars[Random(chars.Length - 1)];
+        }
+        public static string GetRandomString(string chars, int length)
+        {
+            StringBuilder sb = new StringBuilder();
+            while (length-- > 0)
+            {
+                sb.Append(GetRandomChar(chars));
+            }
+            return sb.ToString();
+        }
+        public static string GetRandomNumber(int length)
+        {
+            return GetRandomString(FilesHelper.FilesHelper.Numbers, length);
+        }
+        public static string GetRandomAlphanumeric(int length)
+        {
+            return GetRandomString(FilesHelper.FilesHelper.Alphanumeric, length);
+        }
     }
 }
