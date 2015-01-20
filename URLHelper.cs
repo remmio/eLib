@@ -12,11 +12,17 @@ using CLib.Enums;
 
 namespace CLib
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class URLHelper
     {
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
         public static void OpenURL(string url)
         {
             if (!string.IsNullOrEmpty(url))
@@ -64,11 +70,21 @@ namespace CLib
             return result.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static string URLEncode(string text)
         {
             return Encode(text, FilesHelper.FilesHelper.URLCharacters);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public static string URLPathEncode(string text)
         {
             return Encode(text, FilesHelper.FilesHelper.URLPathCharacters);
