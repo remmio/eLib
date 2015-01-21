@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseHelper.cs" />
+    <Compile Include="Database\ICRUD.cs" />
     <Compile Include="Database\IHistorique.cs" />
     <Compile Include="Database\ISoftDeletable.cs" />
     <Compile Include="Database\Tracable.cs" />

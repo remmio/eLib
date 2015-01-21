@@ -13,36 +13,48 @@ namespace CLib.FilesHelper
     /// </summary>
     public static class FilesHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public const string Numbers = "0123456789"; // 48 ... 57
+        /// <summary>
+        /// 
+        /// </summary>
         public const string AlphabetCapital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 65 ... 90
+        /// <summary>
+        /// 
+        /// </summary>
         public const string Alphabet = "abcdefghijklmnopqrstuvwxyz"; // 97 ... 122
+        /// <summary>
+        /// 
+        /// </summary>
         public const string Alphanumeric = Numbers + AlphabetCapital + Alphabet;
+        /// <summary>
+        /// 
+        /// </summary>
         public const string URLCharacters = Alphanumeric + "-._~"; // 45 46 95 126
+        /// <summary>
+        /// 
+        /// </summary>
         public const string URLPathCharacters = URLCharacters + "/"; // 47
+        /// <summary>
+        /// 
+        /// </summary>
         public const string ValidURLCharacters = URLPathCharacters + ":?#[]@!$&'()*+,;= ";
 
         private static bool IsValidFile(string filePath, Type enumType)
         {
-            string ext = GetFilenameExtension(filePath);
-            if (!String.IsNullOrEmpty(ext))
-            {
-                return Enum.GetNames(enumType).Any(x => ext.Equals(x, StringComparison.InvariantCultureIgnoreCase));
-            }
-            return false;
+            var ext = GetFilenameExtension(filePath);
+            return !string.IsNullOrEmpty(ext) && Enum.GetNames(enumType).Any(x => ext.Equals(x, StringComparison.InvariantCultureIgnoreCase));
         }
 
        
         public static string GetFilenameExtension(string filePath)
         {
-            if (!String.IsNullOrEmpty(filePath))
-            {
-                int pos = filePath.LastIndexOf('.');
-                if (pos >= 0)
-                {
-                    return filePath.Substring(pos + 1).ToLowerInvariant();
-                }
-            }
-            return null;
+            if (string.IsNullOrEmpty(filePath)) return null;
+            var pos = filePath.LastIndexOf('.');
+
+            return pos >= 0 ? filePath.Substring(pos + 1).ToLowerInvariant() : null;
         }
 
         public static bool IsImageFile(string filePath)
@@ -127,24 +139,20 @@ namespace CLib.FilesHelper
 
         public static void CreateDirectoryIfNotExist(string path, bool isFilePath = true)
         {
-            if (!String.IsNullOrEmpty(path))
+            if (String.IsNullOrEmpty(path)) return;
+            if (isFilePath)
             {
-                if (isFilePath)
-                {
-                    path = Path.GetDirectoryName(path);
-                }
+                path = Path.GetDirectoryName(path);
+            }
 
-                if (!String.IsNullOrEmpty(path) && !Directory.Exists(path))
-                {
-                    try
-                    {
-                        Directory.CreateDirectory(path);
-                    }
-                    catch (Exception e)
-                    {
-                        DebugHelper.WriteException(e);                        
-                    }
-                }
+            if (string.IsNullOrEmpty(path) || Directory.Exists(path)) return;
+            try
+            {
+                Directory.CreateDirectory(path);
+            }
+            catch (Exception e)
+            {
+                DebugHelper.WriteException(e);                        
             }
         }
 

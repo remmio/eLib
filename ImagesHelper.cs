@@ -175,22 +175,18 @@ namespace CLib
         #region LOT OF THINGS
 
         /// <summary>
-        /// 
+        /// Open Dialog for Image File
         /// </summary>
         public static string OpenImageFileDialog()
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            using (var ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Image files (*.png, *.jpg, *.jpeg, *.jpe, *.jfif, *.gif, *.bmp, *.tif, *.tiff)|*.png;*.jpg;*.jpeg;*.jpe;*.jfif;*.gif;*.bmp;*.tif;*.tiff|" +
                     "PNG (*.png)|*.png|JPEG (*.jpg, *.jpeg, *.jpe, *.jfif)|*.jpg;*.jpeg;*.jpe;*.jfif|GIF (*.gif)|*.gif|BMP (*.bmp)|*.bmp|TIFF (*.tif, *.tiff)|*.tif;*.tiff|" +
                     "All files (*.*)|*.*";
 
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    return ofd.FileName;
-                }
+                if (ofd.ShowDialog() == DialogResult.OK) return ofd.FileName;               
             }
-
             return null;
         }
 

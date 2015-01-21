@@ -14,10 +14,12 @@ namespace CLib.Database
         /// </summary>
         bool IsDeleted { get; set; }
 
+
         /// <summary>
         /// Guid du Suprimeur
         /// </summary>
         Guid DeletedByUserGuid { get; set; }
+
 
         /// <summary>
         /// Date de Supression

@@ -29,6 +29,12 @@ namespace CLib
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static int Random(int min, int max)
         {
             lock (RandomLock)
@@ -44,13 +50,13 @@ namespace CLib
         /// <returns></returns>
         public static string GetRandLetters(int numberOfCharsToGenerate)
         {
-            var random = new Random();
+            var rand = new Random();
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
             var sb = new StringBuilder();
             for (var i = 0; i < numberOfCharsToGenerate; i++)
             {
-                var num = random.Next(0, chars.Length);
+                var num = rand.Next(0, chars.Length);
                 sb.Append(chars[num]);
             }
             return sb.ToString();
@@ -68,7 +74,7 @@ namespace CLib
 
             for (var i = 0; i < nomberOfNumToGenerate; i++)
             {
-                idOut = idOut + x.Next(1, 9);
+                idOut = idOut + x.Next(0, 9);
             }
             return idOut;
         }
@@ -77,34 +83,67 @@ namespace CLib
         /// 
         /// </summary>
         /// <returns></returns>
-        public static string GetUniqueID()
+        public static string GetUniqueId()
         {
             return Guid.NewGuid().ToString("N");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <param name="count"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
         public static string GetRandomKey(int length = 5, int count = 3, char separator = '-')
         {
-            return Enumerable.Range(1, (length + 1) * count - 1).Aggregate("", (x, index) => x += index % (length + 1) == 0 ? separator : GetRandomChar(FilesHelper.FilesHelper.Alphanumeric));
+            return Enumerable.Range(1, (length + 1) * count - 1).Aggregate("", (x, index) => x + (index % (length + 1) == 0 ? separator : GetRandomChar(FilesHelper.FilesHelper.Alphanumeric)));
         }
        
-        public static char GetRandomChar(string chars)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <returns></returns>
+        private static char GetRandomChar(string chars)
         {
             return chars[Random(chars.Length - 1)];
         }
-        public static string GetRandomString(string chars, int length)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private static string GetRandomString(string chars, int length)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             while (length-- > 0)
             {
                 sb.Append(GetRandomChar(chars));
             }
             return sb.ToString();
         }
-        public static string GetRandomNumber(int length)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private static string GetRandomNumber(int length)
         {
             return GetRandomString(FilesHelper.FilesHelper.Numbers, length);
         }
-        public static string GetRandomAlphanumeric(int length)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private static string GetRandomAlphanumeric(int length)
         {
             return GetRandomString(FilesHelper.FilesHelper.Alphanumeric, length);
         }

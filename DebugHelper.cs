@@ -11,11 +11,10 @@ namespace CLib
         /// <summary>
         /// 
         /// </summary>
-        public static Logger Logger { get; }
+        public static Logger Logger { get; } = new Logger();
 
         static DebugHelper()
         {
-            Logger = new Logger();
         }
 
         /// <summary>

@@ -9,6 +9,24 @@ namespace CLib
     class Snip
     {
 
+        //Enable-Migrations -ContextTypeName SchoolContext -MigrationsDirectory Migrations\SchoolContext
+        //Enable-Migrations -ContextTypeName EconomatContext -MigrationsDirectory Migrations\EconomatContext
+
+
+
+        //Add-Migration -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration "InitialDatabaseCreation"
+        //Add-Migration -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration "InitialDatabaseCreation"
+
+        //Update-Database -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration
+        //Update-Database -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration
+
+
+
+
+
+
+
+
 
         //Stopwatch stopWatch = Stopwatch.StartNew ();
 
