@@ -87,17 +87,13 @@ namespace CLib
         {
             lock (_loggerLock)
             {
-                if (_sbMessages != null && _sbMessages.Length > 0 && !string.IsNullOrEmpty(filepath))
-                {
-                    string messages = _sbMessages.ToString(_lastSaveIndex, _sbMessages.Length - _lastSaveIndex);
+                if (_sbMessages == null || _sbMessages.Length <= 0 || string.IsNullOrEmpty(filepath)) return;
+                var messages = _sbMessages.ToString(_lastSaveIndex, _sbMessages.Length - _lastSaveIndex);
 
-                    if (!string.IsNullOrEmpty(messages))
-                    {
-                        FilesHelper.FilesHelper.CreateDirectoryIfNotExist(filepath);
-                        File.AppendAllText(filepath, messages, Encoding.UTF8);
-                        _lastSaveIndex = _sbMessages.Length;
-                    }
-                }
+                if (string.IsNullOrEmpty(messages)) return;
+                FilesHelper.FilesHelper.CreateDirectoryIfNotExist(filepath);
+                File.AppendAllText(filepath, messages, Encoding.UTF8);
+                _lastSaveIndex = _sbMessages.Length;
             }
         }
 

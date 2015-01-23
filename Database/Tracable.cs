@@ -5,7 +5,7 @@
 namespace CLib.Database
 {
     /// <summary>
-    /// Objet Tracable
+    /// Objet non Supprimable et garde les traces de modification
     /// </summary>
     public abstract class Tracable : IHistorique, ISoftDeletable
     {
@@ -20,13 +20,13 @@ namespace CLib.Database
         /// <summary>
         /// Date d'Ajout
         /// </summary>
-        public DateTime? DateAdded { get; set; } = DateTime.Now;
+        public DateTime? DateAdded { get; set; }
 
 
         /// <summary>
         /// Date de Modification
         /// </summary>
-        public DateTime? DateEdited { get; set; } = DateTime.Now;
+        public DateTime? DateEdited { get; set; }
 
 
         /// <summary>
@@ -50,6 +50,6 @@ namespace CLib.Database
         /// <summary>
         /// Date de Supression
         /// </summary>
-        public DateTime? DateDeleted { get; set; } = DateTime.Now;
+        public DateTime? DateDeleted { get; set; }
     }
 }
