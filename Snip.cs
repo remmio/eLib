@@ -22,13 +22,43 @@ namespace CLib
 
 
 
-
-
-
-
-
-
         //Stopwatch stopWatch = Stopwatch.StartNew ();
+
+
+
+        #region WPF RELATIVE SOURCE BINDING
+
+        //        <Canvas Name = "Parent0" >
+        //    < Border Name="Parent1"
+        //             Width="{Binding RelativeSource={RelativeSource Self},
+        //             Path=Parent.ActualWidth
+        //    }"
+        //             Height="{Binding RelativeSource={RelativeSource Self},
+        //             Path=Parent.ActualHeight
+        //}">
+        //        <Canvas Name = "Parent2" >
+        //            < Border Name="Parent3"
+        //            Width="{Binding RelativeSource={RelativeSource Self},
+        //           Path=Parent.ActualWidth}"
+        //           Height="{Binding RelativeSource={RelativeSource Self},
+        //              Path=Parent.ActualHeight}">
+        //               <Canvas Name = "Parent4" >
+        //               < TextBlock FontSize="16" 
+        //               Margin="5" Text="Display the name of the ancestor"/>
+        //               <TextBlock FontSize = "16"
+        //                 Margin="50" 
+        //            Text="{Binding RelativeSource={RelativeSource  
+        //                       FindAncestor,
+        //                       AncestorType={x:Type Border}, 
+        //                       AncestorLevel=2},Path=Name}" 
+        //                       Width="200"/>
+        //                </Canvas>
+        //            </Border>
+        //        </Canvas>
+        //     </Border>
+        //   </Canvas>        
+
+        #endregion
 
 
         #region TASK
