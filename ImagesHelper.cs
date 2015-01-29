@@ -58,10 +58,10 @@ namespace CLib
         /// </summary>
         /// <param name="bitmap"></param>
         /// <returns></returns>
-        public static Byte[] BitmapToByte ( BitmapImage bitmap )
+        public static byte[] BitmapToByte ( BitmapImage bitmap )
         {
             var stream = bitmap.StreamSource;
-            Byte[] buffer;
+            byte[] buffer;
             if (stream == null || stream.Length <= 0) return null;
             using(var br = new BinaryReader (stream))
             {
@@ -105,16 +105,41 @@ namespace CLib
         /// </summary>
         /// <param name="bitmap"></param>
         /// <returns></returns>
-        public static Byte[] BitmapToByte1 ( BitmapImage bitmap )
+        public static byte[] BitmapToByte1 ( BitmapImage bitmap )
         {
             var stream = bitmap.StreamSource;
-            Byte[] buffer;
+            byte[] buffer;
             if(stream == null || stream.Length <= 0) return null;
             using(var br = new BinaryReader (stream))
             {
                 buffer = br.ReadBytes ((Int32)stream.Length);
             }
             return buffer;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imageIn"></param>
+        /// <returns></returns>
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            var ms = new MemoryStream();
+            imageIn.Save(ms, ImageFormat.Png);
+            return ms.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="byteArrayIn"></param>
+        /// <returns></returns>
+        public static Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            var ms = new MemoryStream(byteArrayIn);
+            var returnImage = Image.FromStream(ms);
+            return returnImage;
         }
 
 
