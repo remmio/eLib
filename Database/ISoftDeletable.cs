@@ -18,13 +18,13 @@ namespace CLib.Database
         /// <summary>
         /// Guid du Suprimeur
         /// </summary>
-        Guid DeletedByUserGuid { get; set; }
+        Guid DeleteUserGuid { get; set; }
 
 
         /// <summary>
         /// Date de Supression
         /// </summary>
-        DateTime? DateDeleted { get; set; }
+        DateTime? DeleteDate { get; set; }
 
     }
 }

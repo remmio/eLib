@@ -9,12 +9,12 @@ namespace CLib.Database
     /// </summary>
     public abstract class Tracable : IHistorique, ISoftDeletable
     {
-       
+
         /// <summary>
         /// Objet Tracable
         /// </summary>
         /// <returns></returns>
-        public Guid AddedByUserGuid { get; set; }
+        public Guid AddUserGuid { get; set; }
 
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace CLib.Database
         /// <summary>
         /// Date de Modification
         /// </summary>
-        public DateTime? DateEdited { get; set; }
+        public DateTime? LastEditDate { get; set; }
 
 
         /// <summary>
         /// Guid du Modificateur
         /// </summary>
-        public Guid EditedByUserGuid { get; set; }
+        public Guid LastEditUserGuid { get; set; }
 
 
         /// <summary>
@@ -44,12 +44,12 @@ namespace CLib.Database
         /// <summary>
         /// Guid du Suprimeur
         /// </summary>
-        public Guid DeletedByUserGuid { get; set; }
+        public Guid DeleteUserGuid { get; set; }
 
 
         /// <summary>
         /// Date de Supression
         /// </summary>
-        public DateTime? DateDeleted { get; set; }
+        public DateTime? DeleteDate { get; set; }
     }
 }

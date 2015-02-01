@@ -7,7 +7,7 @@ using System.Text;
 namespace CLib
 {
     /// <summary>
-    /// 
+    /// Logger des Erreurs
     /// </summary>
     public class Logger
     {
@@ -49,8 +49,7 @@ namespace CLib
                     message = string.Format("{0:yyyy-MM-dd HH:mm:ss.fff} - {1}", DateTime.Now, message);
                 }
 
-                _sbMessages.AppendLine(message);
-                // ReSharper disable once AssignNullToNotNullAttribute
+                _sbMessages.AppendLine(message);                
                 Debug.WriteLine(message);
                 OnMessageAdded(message);
             }
@@ -81,7 +80,7 @@ namespace CLib
         }
 
         /// <summary>
-        /// 
+        /// Append new debug logs to debughelper file
         /// </summary>
         public void SaveLog(string filepath)
         {
@@ -91,6 +90,7 @@ namespace CLib
                 var messages = _sbMessages.ToString(_lastSaveIndex, _sbMessages.Length - _lastSaveIndex);
 
                 if (string.IsNullOrEmpty(messages)) return;
+
                 FilesHelper.FilesHelper.CreateDirectoryIfNotExist(filepath);
                 File.AppendAllText(filepath, messages, Encoding.UTF8);
                 _lastSaveIndex = _sbMessages.Length;
@@ -116,13 +116,9 @@ namespace CLib
         {
             lock (_loggerLock)
             {
-                if (_sbMessages != null && _sbMessages.Length > 0)
-                {
-                    return _sbMessages.ToString();
-                }
-
-                // ReSharper disable once AssignNullToNotNullAttribute
-                return null;
+                if (_sbMessages != null && _sbMessages.Length > 0) return _sbMessages.ToString();
+                             
+                return string.Empty;
             }
         }
     }

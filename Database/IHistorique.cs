@@ -17,17 +17,17 @@ namespace CLib.Database
         /// <summary>
         /// Guid du de L'Ajouteur
         /// </summary>
-        Guid AddedByUserGuid { get; set; }
+        Guid AddUserGuid { get; set; }
 
         /// <summary>
         /// Date de Modification
         /// </summary>
-        DateTime? DateEdited { get; set; }
+        DateTime? LastEditDate { get; set; }
 
         /// <summary>
         /// Guid du Modificateur
         /// </summary>
-        Guid EditedByUserGuid { get; set; }
+        Guid LastEditUserGuid { get; set; }
 
     }
 

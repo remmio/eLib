@@ -57,6 +57,7 @@ namespace CLib
         //        </Canvas>
         //     </Border>
         //   </Canvas>        
+        // <!--Validation.ErrorTemplate ="{DynamicResource ValidationErrorTemplate}" Validation.Error="Validation_Error" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Name, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"/>-->
 
         #endregion
 
