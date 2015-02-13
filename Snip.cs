@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CLib
 {
     class Snip
     {
 
-        //Enable-Migrations -ContextTypeName SchoolContext -MigrationsDirectory Migrations\SchoolContext
-        //Enable-Migrations -ContextTypeName EconomatContext -MigrationsDirectory Migrations\EconomatContext
-
-
-
-        //Add-Migration -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration "InitialDatabaseCreation"
-        //Add-Migration -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration "InitialDatabaseCreation"
+        #region EF
 
         //Update-Database -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration
         //Update-Database -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration
 
+        //Add-Migration -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration "InitialDatabaseCreation"
+        //Add-Migration -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration "InitialDatabaseCreation"
+
+        //Enable-Migrations -ContextTypeName SchoolContext -MigrationsDirectory Migrations\SchoolContext
+        //Enable-Migrations -ContextTypeName EconomatContext -MigrationsDirectory Migrations\EconomatContext
+
+        #endregion
 
 
-        //Stopwatch stopWatch = Stopwatch.StartNew ();
 
 
 
@@ -63,6 +59,8 @@ namespace CLib
 
 
         #region TASK
+
+        //Stopwatch stopWatch = Stopwatch.StartNew ();
 
         //new Task(() =>
         //{

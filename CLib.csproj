@@ -79,7 +79,7 @@
     <Compile Include="RessourcesHelper.cs" />
     <Compile Include="ShortcutHelpers.cs" />
     <Compile Include="Snip.cs" />
-    <Compile Include="TimesHelper.cs" />
+    <Compile Include="DateTimeHelper.cs" />
     <Compile Include="URLHelper.cs" />
     <Compile Include="Validation\ValidationsHelper.cs" />
   </ItemGroup>
