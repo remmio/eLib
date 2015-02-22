@@ -27,5 +27,11 @@ namespace CLib.FilesHelper
             }
             return(new Uri (@"pack://application:,,,/" + assembly.GetName ().Name + ";component/" + pathInApplication, UriKind.Absolute).ToString());
         }
+
+
+
+
+
+
     }
 }
