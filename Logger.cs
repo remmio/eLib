@@ -76,7 +76,11 @@ namespace CLib
         /// </summary>
         public void WriteException(Exception exception, string message = "Exception")
         {
-            WriteException(exception.ToString(), message);
+            while (exception != null)
+            {
+                WriteException(exception.ToString(), message);
+                exception = exception.InnerException;
+            }
         }
 
         /// <summary>

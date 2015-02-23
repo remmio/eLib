@@ -27,11 +27,15 @@ namespace CLib
         /// <returns></returns>
         public static byte[] GetPngFromImageControl ( BitmapImage imageControl )
         {
-            var memStream = new MemoryStream ();
-            var encoder = new PngBitmapEncoder ();
-            encoder.Frames.Add (BitmapFrame.Create (imageControl));
-            encoder.Save (memStream);
-            return memStream.GetBuffer ();
+            try
+            {
+                var memStream = new MemoryStream();
+                var encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(imageControl));
+                encoder.Save(memStream);
+                return memStream.GetBuffer();
+            }
+            catch (Exception) { return null;}
         }
 
         /// <summary>
