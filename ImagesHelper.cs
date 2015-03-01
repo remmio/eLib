@@ -204,6 +204,30 @@ namespace CLib
         #region LOT OF THINGS
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bmp1"></param>
+        /// <param name="bmp2"></param>
+        /// <returns></returns>
+        public static CompareResult Compare(Bitmap bmp1, Bitmap bmp2)
+        {
+            var cr = CompareResult.CiCompareOk;
+
+            //Test to see if we have the same size of image
+            if (bmp1.Size != bmp2.Size) cr = CompareResult.CiSizeMismatch;
+ 
+            else
+            {
+                //Sizes are the same so start comparing pixels
+                for (var x = 0; x < bmp1.Width && cr == CompareResult.CiCompareOk; x++)
+                    for (var y = 0; y < bmp1.Height && cr == CompareResult.CiCompareOk; y++)
+                        if (bmp1.GetPixel(x, y) != bmp2.GetPixel(x, y)) cr = CompareResult.CiPixelMismatch;
+            }
+            return cr;
+        }
+
+
+        /// <summary>
         /// Open Dialog for Image File
         /// </summary>
         public static string OpenImageFileDialog()
@@ -592,4 +616,25 @@ namespace CLib
 
 
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum CompareResult
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        CiCompareOk,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        CiPixelMismatch,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        CiSizeMismatch
+    };
 }
