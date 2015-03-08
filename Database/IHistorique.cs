@@ -30,6 +30,4 @@ namespace CLib.Database
         Guid LastEditUserGuid { get; set; }
 
     }
-
-
 }

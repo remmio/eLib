@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 
@@ -7,7 +8,7 @@ namespace CLib
     /// <summary>
     /// Date and Times Helper
     /// </summary>
-    public class DateTimeHelper
+    public static class DateTimeHelper
     {
 
         /// <summary>
@@ -36,12 +37,57 @@ namespace CLib
         /// </summary>
         /// <param name="ts"></param>
         /// <returns></returns>
-        public static string ProperTimeSpan(TimeSpan ts)
+        public static string ProperTimeSpan(this TimeSpan ts)
         {
-            var time = String.Format("{0:00}", ts.Minutes);   //:{1:00}
+            var time = string.Format("{0:00}", ts.Minutes);   //:{1:00}
             var hours = (int)ts.TotalHours;
             if (hours > 0) time = hours + ":" + time;
             return time;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
+        public static string TotalHoursMins (this TimeSpan timeSpan) {
+            var hours = timeSpan.Hours;
+            var minutes = timeSpan.Minutes;
+
+            return hours>0 ? string.Format("{0} hrs {1} mins", hours, minutes) : string.Format("{0} minutes", minutes);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="span"></param>
+        /// <returns></returns>
+        public static string ToReadableAgeString (this TimeSpan span) {
+            return string.Format("{0:0}", span.Days/365.25);
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="span"></param>
+        /// <returns></returns>
+        public static string ToReadableString (this TimeSpan span) {
+            string formatted = string.Format("{0}{1}{2}{3}",
+                span.Duration().Days>0 ? string.Format("{0:0} day{1}, ", span.Days, span.Days==1 ? String.Empty : "s") : string.Empty,
+                span.Duration().Hours>0 ? string.Format("{0:0} hour{1}, ", span.Hours, span.Hours==1 ? String.Empty : "s") : string.Empty,
+                span.Duration().Minutes>0 ? string.Format("{0:0} minute{1}, ", span.Minutes, span.Minutes==1 ? String.Empty : "s") : string.Empty,
+                span.Duration().Seconds>0 ? string.Format("{0:0} second{1}", span.Seconds, span.Seconds==1 ? String.Empty : "s") : string.Empty);
+
+            if(formatted.EndsWith(", "))
+                formatted=formatted.Substring(0, formatted.Length-2);
+
+            if(string.IsNullOrEmpty(formatted))
+                formatted="0 seconds";
+
+            return formatted;
         }
 
 
@@ -74,5 +120,35 @@ namespace CLib
         {
             return number.ToString().PadLeft(digits, '0');
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="thru"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> EachDay (DateTime from, DateTime thru) {
+            for(var day = from.Date; day.Date<=thru.Date; day=day.AddDays(1))
+                yield return day;
+            //foreach(DateTime day in EachDay(StartDate, EndDate))
+                // print it or whatever
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="thru"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> EachMonth (DateTime from, DateTime thru) {
+            for(var month = from.Date; month.Date<=thru.Date||month.Month==thru.Month; month=month.AddMonths(1))
+                yield return month;
+        }
+
+
+       
+
     }
 }
