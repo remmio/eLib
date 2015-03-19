@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
-
 
 namespace CLib
 {
@@ -148,7 +146,18 @@ namespace CLib
         }
 
 
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="myDate"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> WeekDays (DateTime myDate) {            
+            var firstDateOfWeek = myDate.DayOfWeek==DayOfWeek.Sunday ? myDate.AddDays(-6) : myDate.AddDays(-((int)myDate.DayOfWeek-1));
+
+            for(var day = firstDateOfWeek.Date; day.Date <=firstDateOfWeek.AddDays(6).Date; day=day.AddDays(1))
+                yield return day;
+        }
+
 
     }
 }

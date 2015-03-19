@@ -8,7 +8,6 @@ using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 using Size = System.Drawing.Size;
 
-
 namespace CLib
 {
     

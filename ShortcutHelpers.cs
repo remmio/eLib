@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Environment;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 //using IWshRuntimeLibrary;
 
 namespace CLib
@@ -57,15 +54,15 @@ namespace CLib
         //    return Delete(shortcutPath);
         //}
 
-        public static bool CheckShortcut(Environment.SpecialFolder specialFolder)
+        public static bool CheckShortcut(SpecialFolder specialFolder)
         {
             string shortcutPath = GetShortcutPath(specialFolder);
             return File.Exists(shortcutPath);
         }
 
-        private static string GetShortcutPath(Environment.SpecialFolder specialFolder)
+        private static string GetShortcutPath(SpecialFolder specialFolder)
         {
-            string folderPath = Environment.GetFolderPath(specialFolder);
+            string folderPath = GetFolderPath(specialFolder);
             string shortcutPath = Path.Combine(folderPath, "ShareX");
 
             if (!Path.GetExtension(shortcutPath).Equals(".lnk", StringComparison.InvariantCultureIgnoreCase))

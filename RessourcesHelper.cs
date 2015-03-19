@@ -3,8 +3,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
-
-
 namespace CLib
 {
     /// <summary>
