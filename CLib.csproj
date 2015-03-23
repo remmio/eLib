@@ -81,6 +81,7 @@
     <Compile Include="ShortcutHelpers.cs" />
     <Compile Include="Snip.cs" />
     <Compile Include="DateTimeHelper.cs" />
+    <Compile Include="Ticker.cs" />
     <Compile Include="URLHelper.cs" />
     <Compile Include="Validation\ValidationsHelper.cs" />
   </ItemGroup>

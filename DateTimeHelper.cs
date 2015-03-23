@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Timers;
 
 namespace CLib
 {
@@ -157,6 +159,7 @@ namespace CLib
             for(var day = firstDateOfWeek.Date; day.Date <=firstDateOfWeek.AddDays(6).Date; day=day.AddDays(1))
                 yield return day;
         }
+
 
 
     }
