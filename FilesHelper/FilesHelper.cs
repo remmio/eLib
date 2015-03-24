@@ -32,23 +32,33 @@ namespace CLib.FilesHelper
         /// <summary>
         /// 
         /// </summary>
-        public const string URLCharacters = Alphanumeric + "-._~"; // 45 46 95 126
+        public const string UrlCharacters = Alphanumeric + "-._~"; // 45 46 95 126
         /// <summary>
         /// 
         /// </summary>
-        public const string URLPathCharacters = URLCharacters + "/"; // 47
+        public const string UrlPathCharacters = UrlCharacters + "/"; // 47
         /// <summary>
         /// 
         /// </summary>
-        public const string ValidURLCharacters = URLPathCharacters + ":?#[]@!$&'()*+,;= ";
+        public const string ValidUrlCharacters = UrlPathCharacters + ":?#[]@!$&'()*+,;= ";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="enumType"></param>
+        /// <returns></returns>
         private static bool IsValidFile(string filePath, Type enumType)
         {
             var ext = GetFilenameExtension(filePath);
             return !string.IsNullOrEmpty(ext) && Enum.GetNames(enumType).Any(x => ext.Equals(x, StringComparison.InvariantCultureIgnoreCase));
         }
 
-       
+        /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="filePath"></param>
+       /// <returns></returns>
         public static string GetFilenameExtension(string filePath)
         {
             if (string.IsNullOrEmpty(filePath)) return null;
@@ -57,21 +67,46 @@ namespace CLib.FilesHelper
             return pos >= 0 ? filePath.Substring(pos + 1).ToLowerInvariant() : null;
         }
 
-        public static bool IsImageFile(string filePath)
-        {
-            return IsValidFile(filePath, typeof(ImageFileExtensions));
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool IsImageFile(string filePath) => IsValidFile(filePath, typeof(ImageFileExtensions));
+
+        /// <summary>
+        /// Verifie si cest un document Pdf ou Doc
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool IsDocumentFile (string filePath) => IsValidFile(filePath, typeof(DocumentType));
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static bool IsTextFile(string filePath)
         {
             return IsValidFile(filePath, typeof(TextFileExtensions));
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string GetValidFileName(string fileName)
         {
             char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
             return new string(fileName.Where(c => !invalidFileNameChars.Contains(c)).ToArray());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
         public static void OpenFolderWithFile(string filePath)
         {
             if (!String.IsNullOrEmpty(filePath) && File.Exists(filePath))
@@ -80,7 +115,10 @@ namespace CLib.FilesHelper
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filepath"></param>
         public static void OpenFile(string filepath)
         {
             if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
@@ -99,6 +137,13 @@ namespace CLib.FilesHelper
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="tb"></param>
+        /// <param name="initialDirectory"></param>
+        /// <returns></returns>
         public static bool BrowseFile(string title, TextBox tb, string initialDirectory = "")
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -121,7 +166,7 @@ namespace CLib.FilesHelper
                 }
                 finally
                 {
-                    if (String.IsNullOrEmpty(ofd.InitialDirectory) && !String.IsNullOrEmpty(initialDirectory))
+                    if (string.IsNullOrEmpty(ofd.InitialDirectory) && !string.IsNullOrEmpty(initialDirectory))
                     {
                         ofd.InitialDirectory = initialDirectory;
                     }
@@ -137,6 +182,11 @@ namespace CLib.FilesHelper
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="isFilePath"></param>
         public static void CreateDirectoryIfNotExist(string path, bool isFilePath = true)
         {
             if (String.IsNullOrEmpty(path)) return;
@@ -156,6 +206,11 @@ namespace CLib.FilesHelper
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="destinationFolder"></param>
         public static void BackupFileMonthly(string filepath, string destinationFolder)
         {
             if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
@@ -173,7 +228,11 @@ namespace CLib.FilesHelper
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="destinationFolder"></param>
         public static void BackupFileWeekly(string filepath, string destinationFolder)
         {
             if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
@@ -192,6 +251,11 @@ namespace CLib.FilesHelper
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static string GetAbsolutePath(string path)
         {
             if (!Path.IsPathRooted(path)) // Is relative path?

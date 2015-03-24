@@ -77,7 +77,7 @@ namespace CLib
         /// <returns></returns>
         public static string URLEncode(string text)
         {
-            return Encode(text, FilesHelper.FilesHelper.URLCharacters);
+            return Encode(text, FilesHelper.FilesHelper.UrlCharacters);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace CLib
         /// <returns></returns>
         public static string URLPathEncode(string text)
         {
-            return Encode(text, FilesHelper.FilesHelper.URLPathCharacters);
+            return Encode(text, FilesHelper.FilesHelper.UrlPathCharacters);
         }
 
         public static string HtmlEncode(string text)
