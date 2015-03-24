@@ -8,19 +8,19 @@ namespace CLib.Enums
     public enum ImageFileExtensions
     {
         [Description("Joint Photographic Experts Group")]
-        jpg,
-        jpeg,
+        Jpg,
+        Jpeg,
         [Description("Portable Network Graphic")]
-        png,
+        Png,
         [Description("CompuServe's Graphics Interchange Format")]
-        gif,
+        Gif,
         [Description("Microsoft Windows Bitmap formatted image")]
-        bmp,
+        Bmp,
         [Description("File format used for icons in Microsoft Windows")]
-        ico,
+        Ico,
         [Description("Tagged Image File Format")]
-        tif,
-        tiff
+        Tif,
+        Tiff
     }
 
     /// <summary>
@@ -29,58 +29,58 @@ namespace CLib.Enums
     public enum TextFileExtensions
     {
         [Description("ASCII or Unicode plaintext")]
-        txt,
-        log,
+        Txt,
+        Log,
         [Description("ASCII or extended ASCII text file")]
-        nfo,
+        Nfo,
         [Description("C source")]
-        c,
+        C,
         [Description("C++ source")]
-        cpp,
-        cc,
-        cxx,
+        Cpp,
+        Cc,
+        Cxx,
         [Description("C/C++ header file")]
-        h,
+        H,
         [Description("C++ header file")]
-        hpp,
-        hxx,
+        Hpp,
+        Hxx,
         [Description("C# source")]
-        cs,
+        Cs,
         [Description("Visual Basic.NET source")]
-        vb,
+        Vb,
         [Description("HyperText Markup Language")]
-        html,
-        htm,
+        Html,
+        Htm,
         [Description("eXtensible HyperText Markup Language")]
-        xhtml,
-        xht,
+        Xhtml,
+        Xht,
         [Description("eXtensible Markup Language")]
-        xml,
+        Xml,
         [Description("Cascading Style Sheets")]
-        css,
+        Css,
         [Description("JavaScript and JScript")]
-        js,
+        Js,
         [Description("Hypertext Preprocessor")]
-        php,
+        Php,
         [Description("Batch file")]
-        bat,
+        Bat,
         [Description("Java source")]
-        java,
+        Java,
         [Description("Lua")]
-        lua,
+        Lua,
         [Description("Python source")]
-        py,
+        Py,
         [Description("Perl")]
-        pl,
+        Pl,
         [Description("Visual Studio solution")]
-        sln
+        Sln
     }
 
     public enum VideoFileExtensions
     {
         [Description("MPEG-4 Video File")]
-        mp4,
-        m4v
+        Mp4,
+        M4V
     }
 
     public enum EncryptionStrength
@@ -118,19 +118,19 @@ namespace CLib.Enums
     public enum HashType
     {
         [Description("CRC-32")]
-        CRC32,
+        Crc32,
         [Description("MD5")]
-        MD5,
+        Md5,
         [Description("SHA-1")]
-        SHA1,
+        Sha1,
         [Description("SHA-256")]
-        SHA256,
+        Sha256,
         [Description("SHA-384")]
-        SHA384,
+        Sha384,
         [Description("SHA-512")]
-        SHA512,
+        Sha512,
         [Description("RIPEMD-160")]
-        RIPEMD160
+        Ripemd160
     }
 
     public enum TokenType
@@ -197,12 +197,12 @@ namespace CLib.Enums
 
     public enum ColorType
     {
-        None, RGBA, HSB, CMYK, Hex, Decimal
+        None, Rgba, Hsb, Cmyk, Hex, Decimal
     }
 
     public enum ColorFormat
     {
-        RGB, RGBA, ARGB
+        Rgb, Rgba, Argb
     }
 
     public enum ProxyMethod 

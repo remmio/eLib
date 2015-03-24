@@ -61,6 +61,7 @@
     <Compile Include="Database\ISoftDeletable.cs" />
     <Compile Include="Database\Tracable.cs" />
     <Compile Include="DebugHelper.cs" />
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="EnumsHelper.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\Enums.cs" />

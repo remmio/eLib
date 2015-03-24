@@ -8,55 +8,86 @@ namespace CLib.Validation
     /// </summary>
     public class ValidationsHelper
     {
-
-        public static readonly Version OSVersion = Environment.OSVersion.Version;
-
-        public static bool IsWindowsXP()
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly Version OsVersion = Environment.OSVersion.Version;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsWindowsXp()
         {
-            return OSVersion.Major == 5 && OSVersion.Minor == 1;
+            return OsVersion.Major == 5 && OsVersion.Minor == 1;
         }
-
-        public static bool IsWindowsXPOrGreater()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsWindowsXpOrGreater()
         {
-            return (OSVersion.Major == 5 && OSVersion.Minor >= 1) || OSVersion.Major > 5;
+            return (OsVersion.Major == 5 && OsVersion.Minor >= 1) || OsVersion.Major > 5;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindowsVista()
         {
-            return OSVersion.Major == 6;
+            return OsVersion.Major == 6;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindowsVistaOrGreater()
         {
-            return OSVersion.Major >= 6;
+            return OsVersion.Major >= 6;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindows7()
         {
-            return OSVersion.Major == 6 && OSVersion.Minor == 1;
+            return OsVersion.Major == 6 && OsVersion.Minor == 1;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindows7OrGreater()
         {
-            return (OSVersion.Major == 6 && OSVersion.Minor >= 1) || OSVersion.Major > 6;
+            return (OsVersion.Major == 6 && OsVersion.Minor >= 1) || OsVersion.Major > 6;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindows8()
         {
-            return OSVersion.Major == 6 && OSVersion.Minor == 2;
+            return OsVersion.Major == 6 && OsVersion.Minor == 2;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool IsWindows8OrGreater()
         {
-            return (OSVersion.Major == 6 && OSVersion.Minor >= 2) || OSVersion.Major > 6;
+            return (OsVersion.Major == 6 && OsVersion.Minor >= 2) || OsVersion.Major > 6;
         }
 
 
-        public static bool IsValidIPAddress(string ip)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public static bool IsValidIpAddress(string ip)
         {
             if (string.IsNullOrEmpty(ip)) return false;
 
-            string pattern = @"(?<First>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Second>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Third>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Fourth>2[0-4]\d|25[0-5]|[01]?\d\d?)";
+            const string pattern = @"(?<First>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Second>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Third>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Fourth>2[0-4]\d|25[0-5]|[01]?\d\d?)";
 
             return Regex.IsMatch(ip.Trim(), pattern);
         }

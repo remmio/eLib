@@ -15,7 +15,7 @@ namespace CLib
     /// <summary>
     /// 
     /// </summary>
-    public class URLHelper
+    public class UrlHelper
     {
 
 
@@ -23,7 +23,7 @@ namespace CLib
         /// 
         /// </summary>
         /// <param name="url"></param>
-        public static void OpenURL(string url)
+        public static void OpenUrl(string url)
         {
             if (!string.IsNullOrEmpty(url))
             {
@@ -75,7 +75,7 @@ namespace CLib
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static string URLEncode(string text)
+        public static string UrlEncode(string text)
         {
             return Encode(text, FilesHelper.FilesHelper.UrlCharacters);
         }
@@ -85,7 +85,7 @@ namespace CLib
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static string URLPathEncode(string text)
+        public static string UrlPathEncode(string text)
         {
             return Encode(text, FilesHelper.FilesHelper.UrlPathCharacters);
         }
@@ -150,7 +150,7 @@ namespace CLib
             return urls.Aggregate(CombineURL);
         }
 
-        public static bool IsValidURL(string url)
+        public static bool IsValidUrl(string url)
         {
             if (!string.IsNullOrEmpty(url))
             {
@@ -161,7 +161,7 @@ namespace CLib
             return false;
         }
 
-        public static bool IsValidURLRegex(string url)
+        public static bool IsValidUrlRegex(string url)
         {
             if (string.IsNullOrEmpty(url)) return false;
 
@@ -293,7 +293,7 @@ namespace CLib
             return result;
         }
 
-        private static readonly string[] URLPrefixes = new string[] { "http://", "https://", "ftp://", "ftps://", "file://" };
+        private static readonly string[] UrlPrefixes = new string[] { "http://", "https://", "ftp://", "ftps://", "file://" };
 
         public static string FixPrefix(string url)
         {
@@ -307,12 +307,12 @@ namespace CLib
 
         public static bool HasPrefix(string url)
         {
-            return URLPrefixes.Any(x => url.StartsWith(x, StringComparison.InvariantCultureIgnoreCase));
+            return UrlPrefixes.Any(x => url.StartsWith(x, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public static string RemovePrefixes(string url)
         {
-            foreach (string prefix in URLPrefixes)
+            foreach (string prefix in UrlPrefixes)
             {
                 if (url.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase))
                 {

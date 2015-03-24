@@ -10,8 +10,8 @@ namespace CLib
         //Update-Database -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration
         //Update-Database -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration
 
-        //Add-Migration -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration "v "
-        //Add-Migration -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration "v "
+        //       Add-Migration -ConfigurationTypeName DataService.Migrations.SchoolContext.Configuration "v "
+        //       Add-Migration -ConfigurationTypeName DataService.Migrations.EconomatContext.Configuration "v "
 
         //Enable-Migrations -ContextTypeName SchoolContext -MigrationsDirectory Migrations\SchoolContext
         //Enable-Migrations -ContextTypeName EconomatContext -MigrationsDirectory Migrations\EconomatContext
