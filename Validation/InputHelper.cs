@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Net.Mail;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using libphonenumber;
-
 
 namespace CLib.Validation {
 
@@ -78,7 +73,7 @@ namespace CLib.Validation {
         /// <returns></returns>
         public static bool IsValidEmail (string email) {
             try {
-                var addr = new System.Net.Mail.MailAddress(email);
+                var addr = new MailAddress(email);
                 return addr.Address==email;
             } catch {
                 return false;

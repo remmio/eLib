@@ -2,7 +2,6 @@
 using System.Net.Mail;
 using System.Text;
 
-
 namespace CLib {
 
     /// <summary>
