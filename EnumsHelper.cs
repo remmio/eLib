@@ -18,10 +18,7 @@ namespace CLib
         /// <param name="enumString"> Son String</param>
         /// <typeparam name="T">Type Enum</typeparam>
         /// <returns></returns>
-        public static T ToEnum<T>(this string enumString)
-        {
-            return (T)Enum.Parse(typeof(T), enumString);
-        }
+        public static T ToEnum<T>(this string enumString) => (T)Enum.Parse(typeof(T), enumString);
 
 
         /// <summary>
