@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using System.Windows.Forms;
 using CLib.Enums;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace CLib.FilesHelper
 {
@@ -99,7 +101,7 @@ namespace CLib.FilesHelper
         /// <returns></returns>
         public static string GetValidFileName(string fileName)
         {
-            char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+            var invalidFileNameChars = Path.GetInvalidFileNameChars();
             return new string(fileName.Where(c => !invalidFileNameChars.Contains(c)).ToArray());
         }
 
@@ -109,10 +111,8 @@ namespace CLib.FilesHelper
         /// <param name="filePath"></param>
         public static void OpenFolderWithFile(string filePath)
         {
-            if (!String.IsNullOrEmpty(filePath) && File.Exists(filePath))
-            {
-                Process.Start("explorer.exe", String.Format("/select,\"{0}\"", filePath));
-            }
+            if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                Process.Start("explorer.exe", string.Format("/select,\"{0}\"", filePath));
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace CLib.FilesHelper
         /// <param name="filepath"></param>
         public static void OpenFile(string filepath)
         {
-            if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
+            if (!string.IsNullOrEmpty(filepath) && File.Exists(filepath))
             {
                 Task.Run(() =>
                 {
@@ -131,9 +131,38 @@ namespace CLib.FilesHelper
                     }
                     catch (Exception e)
                     {
-                        DebugHelper.WriteException(e, String.Format("OpenFile({0}) failed", filepath));
+                        DebugHelper.WriteException(e, string.Format("OpenFile({0}) failed", filepath));
                     }
                 });
+            }
+        }
+
+        /// <summary>
+        /// Open Dialog for Image File
+        /// </summary>
+        public static bool BrowseDocuments (string title, TextBox tb, string initialDirectory = "") {          
+            using (var ofd = new OpenFileDialog()) {
+                ofd.Title=title;
+                ofd.Filter="Document (*.pdf, *.doc, *.docx)|*.pdf; *.doc; *.docx";
+
+                try {
+                    var path = tb.Text;
+
+                    if(!string.IsNullOrEmpty(path)) {
+                        path=Path.GetDirectoryName(path);
+
+                        if(Directory.Exists(path))
+                            ofd.InitialDirectory=path;
+                    }
+                } finally {
+                    if(string.IsNullOrEmpty(ofd.InitialDirectory)&&!string.IsNullOrEmpty(initialDirectory))
+                        ofd.InitialDirectory=initialDirectory;
+                }
+
+                if(ofd.ShowDialog()!=DialogResult.OK)
+                    return false;
+                tb.Text=ofd.FileName;
+                return true;
             }
         }
 
@@ -146,40 +175,32 @@ namespace CLib.FilesHelper
         /// <returns></returns>
         public static bool BrowseFile(string title, TextBox tb, string initialDirectory = "")
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            using (var ofd = new OpenFileDialog())
             {
                 ofd.Title = title;
 
                 try
                 {
-                    string path = tb.Text;
+                    var path = tb.Text;
 
-                    if (!String.IsNullOrEmpty(path))
+                    if (!string.IsNullOrEmpty(path))
                     {
                         path = Path.GetDirectoryName(path);
 
                         if (Directory.Exists(path))
-                        {
                             ofd.InitialDirectory = path;
-                        }
                     }
                 }
                 finally
                 {
                     if (string.IsNullOrEmpty(ofd.InitialDirectory) && !string.IsNullOrEmpty(initialDirectory))
-                    {
                         ofd.InitialDirectory = initialDirectory;
-                    }
                 }
 
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    tb.Text = ofd.FileName;
-                    return true;
-                }
+                if (ofd.ShowDialog() != DialogResult.OK) return false;
+                tb.Text = ofd.FileName;
+                return true;
             }
-
-            return false;
         }
 
         /// <summary>
