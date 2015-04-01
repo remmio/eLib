@@ -19,9 +19,6 @@ namespace CLib
         #endregion
 
 
-
-
-
         #region WPF RELATIVE SOURCE BINDING
 
         //        <Canvas Name = "Parent0" >
