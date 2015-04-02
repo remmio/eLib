@@ -66,9 +66,7 @@ namespace CLib.Validation {
         public static bool IsEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
-            {
                 return false;
-            }
             try
             {
                 var regex =
