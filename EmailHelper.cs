@@ -30,7 +30,7 @@ namespace CLib {
                 var client = new SmtpClient {
                     Host="smtp.gmail.com",
                     Port=25,
-                    Timeout=10000,
+                    Timeout=100000,
                     UseDefaultCredentials=false,
                     DeliveryMethod=SmtpDeliveryMethod.Network,
                     EnableSsl=true,

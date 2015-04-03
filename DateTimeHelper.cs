@@ -73,7 +73,7 @@ namespace CLib
         /// <param name="span"></param>
         /// <returns></returns>
         public static string ToReadableString (this TimeSpan span) {
-            string formatted = string.Format("{0}{1}{2}{3}",
+            var formatted = string.Format("{0}{1}{2}{3}",
                 span.Duration().Days>0 ? string.Format("{0:0} day{1}, ", span.Days, span.Days==1 ? String.Empty : "s") : string.Empty,
                 span.Duration().Hours>0 ? string.Format("{0:0} hour{1}, ", span.Hours, span.Hours==1 ? String.Empty : "s") : string.Empty,
                 span.Duration().Minutes>0 ? string.Format("{0:0} minute{1}, ", span.Minutes, span.Minutes==1 ? String.Empty : "s") : string.Empty,
@@ -86,6 +86,22 @@ namespace CLib
                 formatted="0 seconds";
 
             return formatted;
+        }
+
+        /// <summary>
+        /// Format la date a une Date friendly
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public static string Friendly (this DateTime? dateTime)
+        {
+            var date = dateTime.GetValueOrDefault();
+
+            if (date.Date == DateTime.Today)
+                return date.ToString("hh\\:mm");
+            if (date.Date == DateTime.Today.AddDays(-1))
+                return "Hier a " + date.ToString("hh\\:mm");
+            return date.ToShortDateString() + "-" + date.ToString("hh\\:mm");
         }
 
 
