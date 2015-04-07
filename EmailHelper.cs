@@ -30,12 +30,16 @@ namespace CLib {
                 var client = new SmtpClient {
                     Host="smtp.gmail.com",
                     Port=25,
-                    Timeout=100000,
-                    UseDefaultCredentials=false,
+                    Timeout=3000,
+                    UseDefaultCredentials=true,
                     DeliveryMethod=SmtpDeliveryMethod.Network,
                     EnableSsl=true,
                     Credentials=new NetworkCredential("gestioninscriptions@gmail.com", "halidwalid")
                 };
+
+                //var attachment = new Attachment("c:/textfile.txt");
+                //message.Attachments.Add(attachment);
+
                 message.From=new MailAddress(FromServeur);
                 message.BodyEncoding=Encoding.UTF8;
                 message.DeliveryNotificationOptions=DeliveryNotificationOptions.OnFailure;
