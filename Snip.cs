@@ -2,8 +2,7 @@
 
 namespace CLib
 {
-    class Snip
-    {
+    class Snip {
 
         #region EF
 
@@ -108,7 +107,35 @@ namespace CLib
 
 
 
+        #region ToolBar
 
+        //<!--<ToolBar Style = "{StaticResource ToolBarStyle}" DockPanel.Dock="Top">
+        //    <Grid HorizontalAlignment = "Stretch">
+        //        <Grid.ColumnDefinitions>
+        //            <ColumnDefinition/>
+        //            <ColumnDefinition/>
+        //            <ColumnDefinition/>
+        //            <ColumnDefinition/>
+        //            <ColumnDefinition/>
+        //            <ColumnDefinition/>
+        //        </Grid.ColumnDefinitions>
+        //        <Button Content="&#xf015;" Grid.Column="0" Style="{DynamicResource ToolButtonStyle}" Click="StudentsViewBackButton_Click" />
+        //        <Button Content = "&#xf055;" Grid.Column="1" Style="{DynamicResource ToolButtonStyle}" Name="_ADD_BUTON" Click="AddButon_Click" />
+        //        <Button Content = "&#xf014;" Grid.Column="2" Style="{DynamicResource ToolButtonStyle}" Name="_DELETE_BUTTON" Click="DeleteButton_Click"/>
+        //        <Button Content = "&#xf15d;" Grid.Column="3" Style="{DynamicResource ToolButtonStyle}" />
+        //        <Button Content = "&#xf0dc;" Grid.Column="4" Style="{DynamicResource ToolButtonStyle}" />
+        //        <Grid Grid.Column="5">
+        //            <Grid.ColumnDefinitions>
+        //                <ColumnDefinition />
+        //                <ColumnDefinition Width = "40"/>
+        //            </Grid.ColumnDefinitions>
+        //            <TextBox Height= "20" Background= "Beige" Margin= "0,0,10,0" HorizontalAlignment= "Stretch" VerticalContentAlignment= "Center" BorderThickness= "0"/>
+        //            <Button Content= "&#xf002;" Margin= "0,0,10,0" Style= "{DynamicResource ToolButtonStyle}" Grid.Column= "1"/>
+        //        </Grid>
+        //    </Grid>
+        //</ToolBar>-->
+
+        #endregion
 
 
 
