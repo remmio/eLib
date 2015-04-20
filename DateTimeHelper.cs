@@ -161,6 +161,17 @@ namespace CLib
                 yield return month;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="thru"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> EachYear (DateTime from, DateTime thru) {
+            for(var day = from.Date; day.Date<=thru.Date; day=day.AddYears(1))
+                yield return day;
+        }
+
 
         /// <summary>
         /// 
