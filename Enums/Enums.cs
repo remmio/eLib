@@ -99,14 +99,7 @@ namespace CLib.Enums
     }
 
   
-    public enum TaskStatus
-    {
-        InQueue,
-        Preparing,
-        Working,
-        Stopping,
-        Completed
-    }
+   
 
     public enum TaskProgress
     {
