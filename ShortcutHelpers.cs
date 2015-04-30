@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Environment;
+//using System.Environment;
 using System.IO;
 
 //using IWshRuntimeLibrary;
@@ -31,16 +31,16 @@ namespace CLib
         //    return false;
         //}
 
-        public static bool Delete(string shortcutPath)
-        {
-            if (!string.IsNullOrEmpty(shortcutPath) && File.Exists(shortcutPath))
-            {
-                File.Delete(shortcutPath);
-                return true;
-            }
+        //public static bool Delete(string shortcutPath)
+        //{
+        //    if (!string.IsNullOrEmpty(shortcutPath) && File.Exists(shortcutPath))
+        //    {
+         //       File.Delete(shortcutPath);
+         //       return true;
+         //   }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         //public static bool SetShortcut(bool create, Environment.SpecialFolder specialFolder, string arguments = "")
         //{
@@ -54,24 +54,24 @@ namespace CLib
         //    return Delete(shortcutPath);
         //}
 
-        public static bool CheckShortcut(SpecialFolder specialFolder)
-        {
-            string shortcutPath = GetShortcutPath(specialFolder);
-            return File.Exists(shortcutPath);
-        }
+        //public static bool CheckShortcut(SpecialFolder specialFolder)
+        //{
+        //    string shortcutPath = GetShortcutPath(specialFolder);
+        //    return File.Exists(shortcutPath);
+        //}
 
-        private static string GetShortcutPath(SpecialFolder specialFolder)
-        {
-            string folderPath = GetFolderPath(specialFolder);
-            string shortcutPath = Path.Combine(folderPath, "ShareX");
+        //private static string GetShortcutPath(SpecialFolder specialFolder)
+        //{
+         //   string folderPath = GetFolderPath(specialFolder);
+         //   string shortcutPath = Path.Combine(folderPath, "ShareX");
 
-            if (!Path.GetExtension(shortcutPath).Equals(".lnk", StringComparison.InvariantCultureIgnoreCase))
-            {
-                shortcutPath = Path.ChangeExtension(shortcutPath, "lnk");
-            }
+          //  if (!Path.GetExtension(shortcutPath).Equals(".lnk", StringComparison.InvariantCultureIgnoreCase))
+           // {
+           //     shortcutPath = Path.ChangeExtension(shortcutPath, "lnk");
+         //   }
 
-            return shortcutPath;
-        }
+         //   return shortcutPath;
+       // }
 
 
 
