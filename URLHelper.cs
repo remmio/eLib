@@ -293,7 +293,7 @@ namespace CLib
             return result;
         }
 
-        private static readonly string[] UrlPrefixes = new string[] { "http://", "https://", "ftp://", "ftps://", "file://" };
+        private static readonly string[] UrlPrefixes = { "http://", "https://", "ftp://", "ftps://", "file://" };
 
         public static string FixPrefix(string url)
         {

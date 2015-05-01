@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows.Forms;
 using CLib.Enums;
 using TextBox = System.Windows.Controls.TextBox;
+//using System.Windows.Forms;
 
 namespace CLib.FilesHelper
 {

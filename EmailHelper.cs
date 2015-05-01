@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 
@@ -46,7 +47,7 @@ namespace CLib {
 
                 client.Send(message);
                 return true;
-            } catch (System.Exception ex) {
+            } catch (Exception ex) {
                 DebugHelper.WriteException(ex);
                 throw;
                 //return false;
