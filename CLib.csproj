@@ -38,6 +38,9 @@
     <ApplicationIcon>Settings.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Humanizer">
+      <HintPath>..\packages\Humanizer.1.35.0\lib\portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Humanizer.dll</HintPath>
+    </Reference>
     <Reference Include="libphonenumber">
       <HintPath>dll\libphonenumber.dll</HintPath>
     </Reference>
@@ -64,11 +67,6 @@
     <Compile Include="Database\IHistorique.cs" />
     <Compile Include="Database\ISoftDeletable.cs" />
     <Compile Include="Database\Tracable.cs" />
-    <Compile Include="DataClasses1.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DebugHelper.cs" />
     <Compile Include="EmailHelper.cs" />
     <Compile Include="EnumsHelper.cs" />
@@ -103,19 +101,10 @@
     <Content Include="Settings.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataClasses1.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
