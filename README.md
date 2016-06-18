@@ -1,2 +1,1 @@
-# eLib
-C# Helper Librairy
+C# Helper Library
