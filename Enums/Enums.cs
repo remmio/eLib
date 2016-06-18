@@ -1,24 +1,25 @@
-﻿using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
+using eLib.Properties;
 
-namespace CLib.Enums
+namespace eLib.Enums
 {
     /// <summary>
     /// 
     /// </summary>
     public enum ImageFileExtensions
     {
-        [Description("Joint Photographic Experts Group")]
+        [Display(Description = "Joint_Photographic_Experts_Group", ResourceType = typeof (Resources))]
         Jpg,
         Jpeg,
-        [Description("Portable Network Graphic")]
+        [Display(Description = "Portable_Network_Graphic", ResourceType = typeof (Resources))]
         Png,
-        [Description("CompuServe's Graphics Interchange Format")]
+        [Display(Description = "CompuServe_s_Graphics_Interchange_Format", ResourceType = typeof (Resources))]
         Gif,
-        [Description("Microsoft Windows Bitmap formatted image")]
+        [Display(Description = "Microsoft_Windows_Bitmap_formatted_image", ResourceType = typeof (Resources))]
         Bmp,
-        [Description("File format used for icons in Microsoft Windows")]
+        [Display(Description = "File_format_used_for_icons_in_Microsoft_Windows", ResourceType = typeof (Resources))]
         Ico,
-        [Description("Tagged Image File Format")]
+        [Display(Description = "Tagged_Image_File_Format", ResourceType = typeof (Resources))]
         Tif,
         Tiff
     }
@@ -28,57 +29,57 @@ namespace CLib.Enums
     /// </summary>
     public enum TextFileExtensions
     {
-        [Description("ASCII or Unicode plaintext")]
+        [Display(Description = "ASCII or Unicode plaintext", ResourceType = typeof (Resources))]
         Txt,
         Log,
-        [Description("ASCII or extended ASCII text file")]
+        [Display(Description = "ASCII or extended ASCII text file", ResourceType = typeof (Resources))]
         Nfo,
-        [Description("C source")]
+        [Display(Description = "C source", ResourceType = typeof (Resources))]
         C,
-        [Description("C++ source")]
+        [Display(Description = "C++ source", ResourceType = typeof (Resources))]
         Cpp,
         Cc,
         Cxx,
-        [Description("C/C++ header file")]
+        [Display(Description = "C/C++ header file", ResourceType = typeof (Resources))]
         H,
-        [Description("C++ header file")]
+        [Display(Description = "C++ header file", ResourceType = typeof (Resources))]
         Hpp,
         Hxx,
-        [Description("C# source")]
+        [Display(Description = "C# source", ResourceType = typeof (Resources))]
         Cs,
-        [Description("Visual Basic.NET source")]
+        [Display(Description = "Visual Basic.NET source", ResourceType = typeof (Resources))]
         Vb,
-        [Description("HyperText Markup Language")]
+        [Display(Description = "HyperText Markup Language", ResourceType = typeof (Resources))]
         Html,
         Htm,
-        [Description("eXtensible HyperText Markup Language")]
+        [Display(Description = "eXtensible HyperText Markup Language", ResourceType = typeof (Resources))]
         Xhtml,
         Xht,
-        [Description("eXtensible Markup Language")]
+        [Display(Description = "eXtensible Markup Language", ResourceType = typeof (Resources))]
         Xml,
-        [Description("Cascading Style Sheets")]
+        [Display(Description = "Cascading Style Sheets", ResourceType = typeof (Resources))]
         Css,
-        [Description("JavaScript and JScript")]
+        [Display(Description = "JavaScript and JScript", ResourceType = typeof (Resources))]
         Js,
-        [Description("Hypertext Preprocessor")]
+        [Display(Description = "Hypertext Preprocessor", ResourceType = typeof (Resources))]
         Php,
-        [Description("Batch file")]
+        [Display(Description = "Batch file", ResourceType = typeof (Resources))]
         Bat,
-        [Description("Java source")]
+        [Display(Description = "Java source", ResourceType = typeof (Resources))]
         Java,
-        [Description("Lua")]
+        [Display(Description = "Lua", ResourceType = typeof (Resources))]
         Lua,
-        [Description("Python source")]
+        [Display(Description = "Python source", ResourceType = typeof (Resources))]
         Py,
-        [Description("Perl")]
+        [Display(Description = "Perl", ResourceType = typeof (Resources))]
         Pl,
-        [Description("Visual Studio solution")]
+        [Display(Description = "Visual Studio solution", ResourceType = typeof (Resources))]
         Sln
     }
 
     public enum VideoFileExtensions
     {
-        [Description("MPEG-4 Video File")]
+        [Display(Description = "MPEG-4 Video File", ResourceType = typeof (Resources))]
         Mp4,
         M4V
     }
@@ -110,19 +111,19 @@ namespace CLib.Enums
    
     public enum HashType
     {
-        [Description("CRC-32")]
+        [Display(Description = "CRC-32", ResourceType = typeof (Resources))]
         Crc32,
-        [Description("MD5")]
+        [Display(Description = "MD5", ResourceType = typeof (Resources))]
         Md5,
-        [Description("SHA-1")]
+        [Display(Description = "SHA-1", ResourceType = typeof (Resources))]
         Sha1,
-        [Description("SHA-256")]
+        [Display(Description = "SHA-256", ResourceType = typeof (Resources))]
         Sha256,
-        [Description("SHA-384")]
+        [Display(Description = "SHA-384", ResourceType = typeof (Resources))]
         Sha384,
-        [Description("SHA-512")]
+        [Display(Description = "SHA-512", ResourceType = typeof (Resources))]
         Sha512,
-        [Description("RIPEMD-160")]
+        [Display(Description = "RIPEMD-160", ResourceType = typeof (Resources))]
         Ripemd160
     }
 
@@ -156,11 +157,11 @@ namespace CLib.Enums
 
     public enum ReleaseChannelType
     {
-        [Description("Stable version")]
+        [Display(Description = "Stable version", ResourceType = typeof (Resources))]
         Stable,
-        [Description("Beta version")]
+        [Display(Description = "Beta version", ResourceType = typeof (Resources))]
         Beta,
-        [Description("Dev version")]
+        [Display(Description = "Dev version", ResourceType = typeof (Resources))]
         Dev
     }
 

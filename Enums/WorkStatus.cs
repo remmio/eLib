@@ -1,6 +1,6 @@
 ﻿
 
-namespace CLib.Enums {
+namespace eLib.Enums {
 
     /// <summary>
     /// TaskStatus

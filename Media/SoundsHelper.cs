@@ -2,7 +2,7 @@
 using System.Media;
 using System.Threading.Tasks;
 
-namespace CLib.Media
+namespace eLib.Media
 {
     /// <summary>
     /// 

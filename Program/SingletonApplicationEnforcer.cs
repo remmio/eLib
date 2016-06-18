@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.MemoryMappedFiles;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace CLib.Program
+namespace eLib.Program
 {
     /// <summary>
     /// 
@@ -34,16 +36,14 @@ namespace CLib.Program
             /// </summary>
             /// <param name="processArgsFunc">A handler for processing command line args 
             /// when they are received from another application instance.</param>
-            /// <param name="applicationId">The application id used 
             /// for naming the <seealso cref="EventWaitHandle"/>.</param>
-            public SingletonApplicationEnforcer(Action<IEnumerable<string>> processArgsFunc, string applicationId = "DisciplesRock")
+            public SingletonApplicationEnforcer(Action<IEnumerable<string>> processArgsFunc)
             {
                 if (processArgsFunc == null)
-                {
-                    throw new ArgumentNullException("processArgsFunc");
-                }
+                    throw new ArgumentNullException(nameof(processArgsFunc));
+
                 _processArgsFunc = processArgsFunc;
-                _applicationId = applicationId;
+                _applicationId = ((GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(), typeof(GuidAttribute), false)).Value; 
             }
 
             /// <summary>

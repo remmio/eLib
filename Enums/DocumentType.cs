@@ -1,7 +1,7 @@
 ﻿
 
 
-namespace CLib.Enums {
+namespace eLib.Enums {
 
     /// <summary>
     /// Type de Document

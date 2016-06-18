@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace CLib.FilesHelper
+namespace eLib.FilesHelper
 {
     /// <summary>
     /// 
@@ -25,7 +25,7 @@ namespace CLib.FilesHelper
             {
                 pathInApplication = pathInApplication.Substring (1);
             }
-            return(new Uri (@"pack://application:,,,/" + assembly.GetName ().Name + ";component/" + pathInApplication, UriKind.Absolute).ToString());
+            return new Uri (@"pack://application:,,,/" + assembly.GetName ().Name + ";component/" + pathInApplication, UriKind.Absolute).ToString();
         }
 
 

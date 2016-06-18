@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CLib")]
-[assembly: AssemblyDescription("Librairie de Halid Cisse")]
+[assembly: AssemblyTitle("eLib")]
+[assembly: AssemblyDescription("WPF helper Libairry")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Matrix")]
-[assembly: AssemblyProduct("CLib")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Matrix Technology")]
+[assembly: AssemblyProduct("eLib")]
+[assembly: AssemblyCopyright("Copyright © Matrix Technology 2016")]
+[assembly: AssemblyTrademark("eLib")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e6b9d217-36d7-4656-b702-918fc31db125")]
+[assembly: Guid("225a9e45-5fab-4336-b48e-ffdedb0b5899")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -34,5 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: NeutralResourcesLanguage("ff")]
-
+[assembly: NeutralResourcesLanguage("en")]

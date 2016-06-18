@@ -1,0 +1,12 @@
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\bin\Debug\eLib.dll.config
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\bin\Debug\eLib.dll
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\bin\Debug\eLib.pdb
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.csprojResolveAssemblyReference.cache
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\Interop.NATUPNPLib.dll
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\Interop.NETCONLib.dll
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\Interop.NetFwTypeLib.dll
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.csproj.ResolveComReference.cache
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.Properties.Resources.resources
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.csproj.GenerateResource.Cache
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.dll
+C:\Users\HALID\Documents\eSchool\eSchool.External\eLib\obj\Debug\eLib.pdb

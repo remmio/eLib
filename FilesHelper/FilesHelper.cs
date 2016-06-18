@@ -2,13 +2,13 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CLib.Enums;
-using TextBox = System.Windows.Controls.TextBox;
-//using System.Windows.Forms;
+using eLib.Enums;
+using eLib.Utils;
 
-namespace CLib.FilesHelper
+namespace eLib.FilesHelper
 {
     /// <summary>
     /// 
@@ -43,6 +43,21 @@ namespace CLib.FilesHelper
         /// 
         /// </summary>
         public const string ValidUrlCharacters = UrlPathCharacters + ":?#[]@!$&'()*+,;= ";
+
+
+        /// <summary>
+        ///in this format=> "Shirley","Rose","Sean","Jeremy"
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static string[] FileToStringList(string file)
+        {
+            var names = Regex.Split(file, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            for (var i = 0; i < names.Length; i++)
+                names[i] = names[i].Replace("\"", "");
+            return names;
+        }
+
 
         /// <summary>
         /// 
@@ -131,7 +146,7 @@ namespace CLib.FilesHelper
                     }
                     catch (Exception e)
                     {
-                        DebugHelper.WriteException(e, string.Format("OpenFile({0}) failed", filepath));
+                        DebugHelper.Log(e, string.Format("OpenFile({0}) failed", filepath));
                     }
                 });
             }
@@ -140,29 +155,59 @@ namespace CLib.FilesHelper
         /// <summary>
         /// Open Dialog for Image File
         /// </summary>
-        public static bool BrowseDocuments (string title, TextBox tb, string initialDirectory = "") {          
-            using (var ofd = new OpenFileDialog()) {
-                ofd.Title=title;
-                ofd.Filter="Document (*.pdf, *.doc, *.docx)|*.pdf; *.doc; *.docx";
+        public static string BrowseDocuments (string title, string path, string initialDirectory = default(string)) {
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.Title = title;
+                ofd.Filter = "Document (*.pdf, *.doc, *.docx)|*.pdf; *.doc; *.docx";
 
-                try {
-                    var path = tb.Text;
+                try
+                {
 
-                    if(!string.IsNullOrEmpty(path)) {
-                        path=Path.GetDirectoryName(path);
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        path = Path.GetDirectoryName(path);
 
-                        if(Directory.Exists(path))
-                            ofd.InitialDirectory=path;
+                        if (path != null && Directory.Exists(path))
+                            ofd.InitialDirectory = path;
                     }
-                } finally {
-                    if(string.IsNullOrEmpty(ofd.InitialDirectory)&&!string.IsNullOrEmpty(initialDirectory))
-                        ofd.InitialDirectory=initialDirectory;
+                }
+                finally
+                {
+                    if (string.IsNullOrEmpty(ofd.InitialDirectory) && !string.IsNullOrEmpty(initialDirectory))
+                        ofd.InitialDirectory = initialDirectory;
                 }
 
-                if(ofd.ShowDialog()!=DialogResult.OK)
-                    return false;
-                tb.Text=ofd.FileName;
-                return true;
+                if (ofd.ShowDialog() != DialogResult.OK)
+                    return ofd.FileName;
+                return ofd.FileName;
+            }
+        }
+
+        public static string BrowseLicence(string title, string path, string initialDirectory = default(string))
+        {   
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.Title = title;
+                ofd.Filter = "Document (*.lic)|*.lic;";
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        path = Path.GetDirectoryName(path);
+
+                        if (path != null && Directory.Exists(path))
+                            ofd.InitialDirectory = path;
+                    }
+                }
+                finally
+                {
+                    if (string.IsNullOrEmpty(ofd.InitialDirectory) && !string.IsNullOrEmpty(initialDirectory))
+                        ofd.InitialDirectory = initialDirectory;
+                }
+
+                return ofd.ShowDialog() != DialogResult.OK ? ofd.FileName : ofd.FileName;
             }
         }
 
@@ -173,7 +218,7 @@ namespace CLib.FilesHelper
         /// <param name="tb"></param>
         /// <param name="initialDirectory"></param>
         /// <returns></returns>
-        public static bool BrowseFile(string title, TextBox tb, string initialDirectory = "")
+        public static bool BrowseFile(string title, TextBox tb, string initialDirectory = default(string))
         {
             using (var ofd = new OpenFileDialog())
             {
@@ -187,7 +232,7 @@ namespace CLib.FilesHelper
                     {
                         path = Path.GetDirectoryName(path);
 
-                        if (Directory.Exists(path))
+                        if (path != null && Directory.Exists(path))
                             ofd.InitialDirectory = path;
                     }
                 }
@@ -210,7 +255,7 @@ namespace CLib.FilesHelper
         /// <param name="isFilePath"></param>
         public static void CreateDirectoryIfNotExist(string path, bool isFilePath = true)
         {
-            if (String.IsNullOrEmpty(path)) return;
+            if (string.IsNullOrEmpty(path)) return;
             if (isFilePath)
             {
                 path = Path.GetDirectoryName(path);
@@ -223,7 +268,7 @@ namespace CLib.FilesHelper
             }
             catch (Exception e)
             {
-                DebugHelper.WriteException(e);                        
+                e.Log();                        
             }
         }
 
@@ -234,11 +279,11 @@ namespace CLib.FilesHelper
         /// <param name="destinationFolder"></param>
         public static void BackupFileMonthly(string filepath, string destinationFolder)
         {
-            if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
+            if (!string.IsNullOrEmpty(filepath) && File.Exists(filepath))
             {
                 string filename = Path.GetFileNameWithoutExtension(filepath);
                 string extension = Path.GetExtension(filepath);
-                string newFilename = String.Format("{0}-{1:yyyy-MM}{2}", filename, DateTime.Now, extension);
+                string newFilename = string.Format("{0}-{1:yyyy-MM}{2}", filename, DateTime.Now, extension);
                 string newFilepath = Path.Combine(destinationFolder, newFilename);
 
                 if (!File.Exists(newFilepath))
@@ -256,12 +301,12 @@ namespace CLib.FilesHelper
         /// <param name="destinationFolder"></param>
         public static void BackupFileWeekly(string filepath, string destinationFolder)
         {
-            if (!String.IsNullOrEmpty(filepath) && File.Exists(filepath))
+            if (!string.IsNullOrEmpty(filepath) && File.Exists(filepath))
             {
                 string filename = Path.GetFileNameWithoutExtension(filepath);
                 DateTime dateTime = DateTime.Now;
                 string extension = Path.GetExtension(filepath);
-                string newFilename = String.Format("{0}-{1:yyyy-MM}-W{2:00}{3}", filename, dateTime, dateTime.DayOfYear, extension);
+                string newFilename = string.Format("{0}-{1:yyyy-MM}-W{2:00}{3}", filename, dateTime, dateTime.DayOfYear, extension);
                 string newFilepath = Path.Combine(destinationFolder, newFilename);
 
                 if (!File.Exists(newFilepath))
