@@ -67,7 +67,7 @@ namespace eLib.Exceptions
 
         public RemoteException(string message, Exception inner) : base(message, inner) { }
 
-        public RemoteException(HttpStatusCode statusCode, string reasonPhrase, string message) : base(reasonPhrase)
+        public RemoteException(HttpStatusCode statusCode, string message = default(string), string reasonPhrase = default(string)) : base(reasonPhrase)
         {
             if (!string.IsNullOrEmpty(message))
                 Message = message;

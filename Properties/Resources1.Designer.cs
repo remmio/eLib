@@ -61,6 +61,15 @@ namespace eLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not authorized to do this operation..
+        /// </summary>
+        public static string AccesDenied_You_are_not_authorized_to_do_this_operation_ {
+            get {
+                return ResourceManager.GetString("AccesDenied_You_are_not_authorized_to_do_this_operation_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome, your school {0} has been created {1} Please download the user manual from the menu &apos;About&apos;.
         /// </summary>
         public static string AddSchool_Executed_Welcome__your_school__0__has_been_created__1__Please_download_the_user_manual_from_the_menu__About_ {
@@ -256,6 +265,15 @@ namespace eLib.Properties {
         public static string Yearly {
             get {
                 return ResourceManager.GetString("Yearly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not authorized to do this operation..
+        /// </summary>
+        public static string You_are_not_authorized_to_do_this_operation_ {
+            get {
+                return ResourceManager.GetString("You_are_not_authorized_to_do_this_operation_", resourceCulture);
             }
         }
     }

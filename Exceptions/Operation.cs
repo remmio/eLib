@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Sockets;
 using System.Web.Http;
+using eLib.Properties;
 
 namespace eLib.Exceptions
 {
@@ -65,7 +65,7 @@ namespace eLib.Exceptions
             
         public static Operation AccesDenied(string message = default (string))
         {
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            throw new RemoteException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden");
         }
 
         public static Operation Denied(string message = default(string))
@@ -74,7 +74,7 @@ namespace eLib.Exceptions
             {
                 Success = false,
                 Message = message,
-                Exception = new HttpResponseException(HttpStatusCode.Unauthorized)
+                Exception = new RemoteException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden")
             };
         }
 
@@ -93,14 +93,7 @@ namespace eLib.Exceptions
         {
             if (!operation.Success)
                 throw new CoolException(nonSuccesMessage);
-        }
-
-        public static void Deny(string reason = default(string))
-        {
-            if (reason == default(string))
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
-        }
+        }       
 
         public static string AsMessage(this Exception exception)
         {
@@ -117,10 +110,15 @@ namespace eLib.Exceptions
                     case HttpStatusCode.RequestTimeout:
                         return "The connection timed out";
                     case HttpStatusCode.Unauthorized:
-                        return "The connection timed out";
+                        return "You must log in to access the requested resource.";
+                    case HttpStatusCode.Forbidden:
+                        return "You are not authorized to access this page.";
+                    case HttpStatusCode.NotFound:
+                        return "The requested resource is not found, please update the program";
                 }
                 return ((HttpResponseException) exception).Response.ReasonPhrase;
-            } else if (exception is RemoteException)
+            }
+            if (exception is RemoteException)
             {
                 switch (((RemoteException)exception).StatusCode)
                 {
@@ -139,8 +137,8 @@ namespace eLib.Exceptions
                 }
                 return ((RemoteException)exception).ReasonPhrase;
             }
-            
-            return exception.Message;
+
+            return exception.MostInner().Message;
         }
 
         public static Exception MostInner(this Exception exception)

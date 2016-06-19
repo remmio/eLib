@@ -7,42 +7,11 @@ namespace eLib.Security
     public static class Credentials
     {
 
-        public static string Get()
-        {
-            return Get("Token");
-        }
+        public static string Get() => Get("Token");
 
-        public static bool Set(string token)
-        {
-            try
-            {
-                return new Credential
-                {
-                    Target = "Token",
-                    Password = token,
-                    Type = CredentialType.DomainPassword,
-                    PersistanceType = PersistanceType.Session,
-                }.Save();
-            }
-            catch (Exception exception)
-            {
-                exception.Log();
-                return false;
-            }
-        }
+        public static bool Set(string token) => Set("Token", token);
 
-        public static bool Delete()
-        {
-            try
-            {
-                return new Credential { Target = "Token" }.Delete();
-            }
-            catch (Exception exception)
-            {
-                exception.Log();
-                return false;
-            }
-        }
+        public static bool Delete() => Delete("Token");
 
         #region IMPLEMENTATION
 

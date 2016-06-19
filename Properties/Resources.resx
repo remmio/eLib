@@ -184,4 +184,10 @@
   <data name="Editing" xml:space="preserve">
     <value>Editing</value>
   </data>
+  <data name="You_are_not_authorized_to_do_this_operation_" xml:space="preserve">
+    <value>You are not authorized to do this operation.</value>
+  </data>
+  <data name="AccesDenied_You_are_not_authorized_to_do_this_operation_" xml:space="preserve">
+    <value>You are not authorized to do this operation.</value>
+  </data>
 </root>
