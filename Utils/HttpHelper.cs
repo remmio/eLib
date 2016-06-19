@@ -4,9 +4,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
 using eLib.Exceptions;
+using eLib.Security;
 using Newtonsoft.Json;
+using static eLib.Exceptions.Operation;
 
 namespace eLib.Utils
 {
@@ -29,7 +30,9 @@ namespace eLib.Utils
 
                 var response = await client.GetAsync(path);
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
+
                 return await response.Content.ReadAsAsync<T>();
             }           
         }
@@ -47,7 +50,8 @@ namespace eLib.Utils
 
                 var response = await client.GetAsync(path);
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
             }
         }
 
@@ -70,7 +74,8 @@ namespace eLib.Utils
 
                 var response = await client.PostAsync(path, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);               
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
                 return await response.Content.ReadAsAsync<T>();
             }
         }
@@ -94,8 +99,9 @@ namespace eLib.Utils
 
                 var response = await client.PostAsync(path, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
-                return Operation.Succes(response.Headers.Location?.ToString());
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
+                return Succes(response.Headers.Location?.ToString());
             }
         }
 
@@ -118,8 +124,9 @@ namespace eLib.Utils
 
                 var response = await client.PutAsync(objectPath, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
-                return Operation.Succes(response.Headers.Location?.ToString());
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
+                return Succes(response.Headers.Location?.ToString());
             }
         }
 
@@ -132,19 +139,14 @@ namespace eLib.Utils
 
                 var response = await client.DeleteAsync(objectPath);
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
-                return Operation.Succes(response.ReasonPhrase);
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
+                return Succes(response.ReasonPhrase);
             }
         }
 
-        public static async Task<Operation> HttpLogin(string path, string username, string password, string authtoken = default(string))
+        public static async Task<Operation> HttpLogin(string path, string username, string password, bool rememberMe = default(bool))
         {
-            if (!string.IsNullOrEmpty(authtoken))
-            {
-                Token = authtoken;
-                return Operation.Succes(authtoken);
-            }
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = BaseUri;
@@ -162,11 +164,15 @@ namespace eLib.Utils
                 if (!string.IsNullOrEmpty(tokenModel?.AccessToken))
                 {
                     Token = tokenModel.AccessToken;
-                    return Operation.Succes(tokenModel.AccessToken);
+
+                    if (rememberMe)
+                        Credentials.Set(tokenModel.AccessToken);
+
+                    return Succes(tokenModel.AccessToken);                    
                 }
 
                 Token = string.Empty;
-                return Operation.Failed(responseMessage.ReasonPhrase);
+                return Failed(responseMessage.ReasonPhrase);
             }
         }
             
@@ -180,8 +186,9 @@ namespace eLib.Utils
                 await response.Content.ReadAsStringAsync();
                 Token = string.Empty;
                 if (!response.IsSuccessStatusCode)
-                    throw new HttpResponseException(response.StatusCode);
-                return Operation.Succes(response.ReasonPhrase);
+                    throw new RemoteException(response.StatusCode, response.ReasonPhrase,
+                        await response.Content.ReadAsStringAsync());
+                return Succes(response.ReasonPhrase);
             }
         }
 

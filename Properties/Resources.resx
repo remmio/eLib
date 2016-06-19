@@ -178,4 +178,10 @@
   <data name="Bi_Weekly" xml:space="preserve">
     <value>Bi Weekly</value>
   </data>
+  <data name="AddSchool_Executed_Welcome__your_school__0__has_been_created__1__Please_download_the_user_manual_from_the_menu__About_" xml:space="preserve">
+    <value>Welcome, your school {0} has been created {1} Please download the user manual from the menu 'About'</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Editing</value>
+  </data>
 </root>

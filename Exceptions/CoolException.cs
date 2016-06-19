@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace eLib.Exceptions
 {
@@ -30,10 +31,9 @@ namespace eLib.Exceptions
 
 
         public static CoolException NotFound(Type obj) => new CoolException(obj.Name + " Not Found");
-
     }
 
-    public class LicenceException : Exception
+    public class LicenceException : CoolException
     {
         public Type Type { get; set; }
         public int Limit { get; set; }
@@ -51,6 +51,29 @@ namespace eLib.Exceptions
         }
 
         public LicenceException(string message, Exception inner) : base(message, inner) { }
+    }
 
+    public class RemoteException : CoolException
+    {
+        public HttpStatusCode StatusCode { get; set; }
+        public string ReasonPhrase { get; set; }
+        public override string Message { get; }
+
+        public RemoteException() { }
+       
+        public RemoteException(string message) : base(message)
+        {
+        }
+
+        public RemoteException(string message, Exception inner) : base(message, inner) { }
+
+        public RemoteException(HttpStatusCode statusCode, string reasonPhrase, string message) : base(reasonPhrase)
+        {
+            if (!string.IsNullOrEmpty(message))
+                Message = message;
+
+            StatusCode   = statusCode;
+            ReasonPhrase = reasonPhrase;
+        }
     }
 }

@@ -130,3 +130,4 @@ Releases/
 
 *.nupkg
 *.Cache
+*.dll

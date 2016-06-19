@@ -120,51 +120,26 @@ namespace eLib.Exceptions
                         return "The connection timed out";
                 }
                 return ((HttpResponseException) exception).Response.ReasonPhrase;
-            }
-
-            if (exception is SocketException)
+            } else if (exception is RemoteException)
             {
-                //switch (((SocketException)exception).SocketErrorCode)
-                //{
-                //    case SocketError.SocketError:
-                //        return "Oops! Sorry! Something went wrong";
-                //    case SocketError.Interrupted:
-                //        return "Oops! Sorry! Something went wrong";
-                //    case SocketError.AccessDenied:
-                //        return "Not authorized";
-                //    case SocketError.Fault:
-                //        return "Oops! Sorry! Something went wrong";
-                //    case SocketError.NetworkDown:
-                //        break;
-                //    case SocketError.NetworkUnreachable:
-                //        break;
-                //    case SocketError.NetworkReset:
-                //        break;                    
-                //    case SocketError.ConnectionReset:
-                //        break;                    
-                //    case SocketError.NotConnected:
-                //        break;
-                //    case SocketError.Shutdown:
-                //        break;
-                //    case SocketError.TimedOut:
-                //        break;
-                //    case SocketError.ConnectionRefused:
-                //        break;
-                //    case SocketError.HostDown:
-                //        break;
-                //    case SocketError.HostUnreachable:
-                //        break;                    
-                //    case SocketError.HostNotFound:
-                //        break;                    
-                //    case SocketError.OperationAborted:
-                //        break;
-                //    default:
-                //        throw new ArgumentOutOfRangeException();
-                //}
-
-                return ((SocketException) exception).Message;
+                switch (((RemoteException)exception).StatusCode)
+                {
+                    case HttpStatusCode.GatewayTimeout:
+                        return "The connection timed out";
+                    case HttpStatusCode.InternalServerError:
+                        return "Oops! Sorry! Something went wrong";
+                    case HttpStatusCode.RequestTimeout:
+                        return "The connection timed out";
+                    case HttpStatusCode.Unauthorized:
+                        return "You must log in to access the requested resource";
+                    case HttpStatusCode.Forbidden:
+                        return "You are not authorized to access this page.";
+                    case HttpStatusCode.NotFound:
+                        return "The requested resource is not found, please update the program";
+                }
+                return ((RemoteException)exception).ReasonPhrase;
             }
-
+            
             return exception.Message;
         }
 

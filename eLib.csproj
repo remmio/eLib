@@ -41,6 +41,10 @@
     <ApplicationIcon>library.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CredentialManagement, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CredentialManagement.1.0.2\lib\net35\CredentialManagement.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Exceptionless.Portable, Version=3.5.1738.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.Portable.Signed.3.5.1738\lib\net45\Exceptionless.Portable.dll</HintPath>
       <Private>True</Private>
@@ -154,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\Credentials.cs" />
     <Compile Include="Tasks\TasksHelper.cs" />
     <Compile Include="Utils\FirewallHelperAlt.cs" />
     <Compile Include="Utils\DateTimeHelper.cs" />

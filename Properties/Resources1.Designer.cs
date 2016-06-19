@@ -61,6 +61,16 @@ namespace eLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome, your school {0} has been created {1} Please download the user manual from the menu &apos;About&apos;.
+        /// </summary>
+        public static string AddSchool_Executed_Welcome__your_school__0__has_been_created__1__Please_download_the_user_manual_from_the_menu__About_ {
+            get {
+                return ResourceManager.GetString("AddSchool_Executed_Welcome__your_school__0__has_been_created__1__Please_download_" +
+                        "the_user_manual_from_the_menu__About_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Afternoon.
         /// </summary>
         public static string Afternoon {
@@ -93,6 +103,15 @@ namespace eLib.Properties {
         public static string CompuServe_s_Graphics_Interchange_Format {
             get {
                 return ResourceManager.GetString("CompuServe_s_Graphics_Interchange_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing.
+        /// </summary>
+        public static string Editing {
+            get {
+                return ResourceManager.GetString("Editing", resourceCulture);
             }
         }
         
