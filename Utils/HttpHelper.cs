@@ -159,7 +159,7 @@ namespace eLib.Utils
                     Token = tokenModel.AccessToken;
 
                     if (rememberMe)
-                        Credentials.Set(tokenModel.AccessToken);
+                        WebCredentials.Set(tokenModel.AccessToken);
 
                     return Succes(tokenModel.AccessToken);                    
                 }

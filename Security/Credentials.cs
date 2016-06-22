@@ -13,6 +13,7 @@ namespace eLib.Security
 
         public static bool Delete() => Delete("Token");
 
+
         #region IMPLEMENTATION
 
         public static string Get(string key)

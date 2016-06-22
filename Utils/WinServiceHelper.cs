@@ -24,7 +24,7 @@ namespace eLib.Utils
                        return;
                    }
 
-                   if (ServiceController.GetServices().All(s => s.ServiceName.Equals(serviceName, StringComparison.InvariantCultureIgnoreCase)))
+                   if (ServiceController.GetServices().Any(s => s.ServiceName.Equals(serviceName, StringComparison.InvariantCultureIgnoreCase)))
                    {
                        using (var controller = new ServiceController(serviceName))
                        {
@@ -71,7 +71,7 @@ namespace eLib.Utils
                catch (Exception exception)
                {                  
                    exception.Log();
-                   onStartHandler.Invoke( new ErrorEventArgs(exception));
+                   UnInstallService(servicePath, args => onStartHandler.Invoke(new ErrorEventArgs(exception)));                   
                }
            });
         }
@@ -192,7 +192,6 @@ namespace eLib.Utils
 
         public static void UnInstallService(string path, Action<EventArgs> onComplete)
         {
-            path = path + ".exe";
             RemoveFirewallExeption(path, Path.GetFileName(path));
             RunCmd(path, "uninstall", onComplete);
         }

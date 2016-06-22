@@ -40,6 +40,9 @@
   <PropertyGroup>
     <ApplicationIcon>library.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CredentialManagement, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CredentialManagement.1.0.2\lib\net35\CredentialManagement.dll</HintPath>
@@ -88,6 +91,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Windows.Security" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +163,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Security\Credentials.cs" />
+    <Compile Include="Security\WebCredentials.cs" />
     <Compile Include="Tasks\TasksHelper.cs" />
     <Compile Include="Utils\FirewallHelperAlt.cs" />
     <Compile Include="Utils\DateTimeHelper.cs" />
