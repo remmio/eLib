@@ -14,7 +14,7 @@ namespace eLib.Utils
         /// <param name="fwaction">Rule action.</param>
         /// <param name="action">"Add or remove the specified rule."</param>
         public static void AddFirewallRule(string path, string name, NET_FW_RULE_DIRECTION_ direction, NET_FW_ACTION_ fwaction, bool action)
-        {       
+        {
             try
             {
                 var firewallRule = (INetFwRule)Activator.CreateInstance(
@@ -63,5 +63,4 @@ namespace eLib.Utils
         }
     }
 }
-  
-   
+

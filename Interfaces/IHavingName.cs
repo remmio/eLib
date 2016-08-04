@@ -1,5 +1,4 @@
 ﻿
-
 namespace eLib.Interfaces
 {
     public interface IHavingName

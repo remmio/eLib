@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 
 namespace eLib.Collections
-{   
+{
     public static class EnumerableExtension
     {
         public static T Random<T>(this IEnumerable<T> source) => source.Random(1).FirstOrDefault();

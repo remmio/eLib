@@ -7,7 +7,6 @@ namespace eLib.Interfaces
     /// </summary>
     public interface IHistorique
     {
-
         /// <summary>
         /// Date d'Ajout
         /// </summary>
@@ -27,6 +26,5 @@ namespace eLib.Interfaces
         /// Guid du Modificateur
         /// </summary>
         Guid? EditedBy { get; set; }
-
     }
 }

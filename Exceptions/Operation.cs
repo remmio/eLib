@@ -6,7 +6,6 @@ using eLib.Properties;
 
 namespace eLib.Exceptions
 {
-   
         public class Operation<TResult>
         {
             private Operation()
@@ -65,7 +64,7 @@ namespace eLib.Exceptions
             
         public static Operation AccesDenied(string message = default (string))
         {
-            throw new RemoteException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden");
+            throw new ApiException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden");
         }
 
         public static Operation Denied(string message = default(string))
@@ -74,7 +73,7 @@ namespace eLib.Exceptions
             {
                 Success = false,
                 Message = message,
-                Exception = new RemoteException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden")
+                Exception = new ApiException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden")
             };
         }
 
@@ -92,7 +91,7 @@ namespace eLib.Exceptions
         public static void EnsureSucces(this Operation operation, string nonSuccesMessage)
         {
             if (!operation.Success)
-                throw new CoolException(nonSuccesMessage);
+                throw new UxException(nonSuccesMessage);
         }       
 
         public static string AsMessage(this Exception exception)
@@ -118,9 +117,9 @@ namespace eLib.Exceptions
                 }
                 return ((HttpResponseException) exception).Response.ReasonPhrase;
             }
-            if (exception is RemoteException)
+            if (exception is ApiException)
             {
-                switch (((RemoteException)exception).StatusCode)
+                switch (((ApiException)exception).StatusCode)
                 {
                     case HttpStatusCode.GatewayTimeout:
                         return "The connection timed out";
@@ -135,7 +134,7 @@ namespace eLib.Exceptions
                     case HttpStatusCode.NotFound:
                         return "The requested resource is not found, please update the program";
                 }
-                return ((RemoteException)exception).ReasonPhrase;
+                return ((ApiException)exception).ReasonPhrase;
             }
 
             return exception.MostInner().Message;

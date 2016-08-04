@@ -22,8 +22,6 @@ namespace eLib.Utils
 
 
 
-
-
         #region URL
 
         /// <summary>
@@ -50,11 +48,11 @@ namespace eLib.Utils
 
         private static string Encode(string text, string unreservedCharacters)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
             if (!string.IsNullOrEmpty(text))
             {
-                foreach (char c in text)
+                foreach (var c in text)
                 {
                     if (unreservedCharacters.Contains(c))
                     {
@@ -62,9 +60,9 @@ namespace eLib.Utils
                     }
                     else
                     {
-                        byte[] bytes = Encoding.UTF8.GetBytes(c.ToString());
+                        var bytes = Encoding.UTF8.GetBytes(c.ToString());
 
-                        foreach (byte b in bytes)
+                        foreach (var b in bytes)
                         {
                             result.AppendFormat(CultureInfo.InvariantCulture, "%{0:X2}", b);
                         }
@@ -97,12 +95,12 @@ namespace eLib.Utils
 
         public static string HtmlEncode(string text)
         {
-            char[] chars = HttpUtility.HtmlEncode(text).ToCharArray();
-            StringBuilder result = new StringBuilder(chars.Length + (int) (chars.Length*0.1));
+            var chars = HttpUtility.HtmlEncode(text).ToCharArray();
+            var result = new StringBuilder(chars.Length + (int) (chars.Length*0.1));
 
-            foreach (char c in chars)
+            foreach (var c in chars)
             {
-                int value = Convert.ToInt32(c);
+                var value = Convert.ToInt32(c);
 
                 if (value > 127)
                 {
@@ -119,8 +117,8 @@ namespace eLib.Utils
 
         public static string CombineUrl(string url1, string url2)
         {
-            bool url1Empty = string.IsNullOrEmpty(url1);
-            bool url2Empty = string.IsNullOrEmpty(url2);
+            var url1Empty = string.IsNullOrEmpty(url1);
+            var url2Empty = string.IsNullOrEmpty(url2);
 
             if (url1Empty && url2Empty)
             {
@@ -223,7 +221,7 @@ namespace eLib.Utils
                     url = url.Remove(0, 1);
                 }
 
-                for (int i = 0; i < count; i++)
+                for (var i = 0; i < count; i++)
                 {
                     url = "/" + url;
                 }
@@ -235,7 +233,7 @@ namespace eLib.Utils
                     url = url.Substring(0, url.Length - 1);
                 }
 
-                for (int i = 0; i < count; i++)
+                for (var i = 0; i < count; i++)
                 {
                     url += "/";
                 }
@@ -250,7 +248,7 @@ namespace eLib.Utils
             {
                 string tempPath = null;
 
-                for (int i = 0; i < 10 && path != tempPath; i++)
+                for (var i = 0; i < 10 && path != tempPath; i++)
                 {
                     tempPath = path;
                     path = HttpUtility.UrlDecode(path);
@@ -282,10 +280,10 @@ namespace eLib.Utils
 
         public static List<string> GetPaths(string path)
         {
-            List<string> result = new List<string>();
-            string temp = string.Empty;
-            string[] dirs = path.Split('/');
-            foreach (string dir in dirs)
+            var result = new List<string>();
+            var temp = string.Empty;
+            var dirs = path.Split('/');
+            foreach (var dir in dirs)
             {
                 if (!string.IsNullOrEmpty(dir))
                 {
@@ -316,7 +314,7 @@ namespace eLib.Utils
 
         public static string RemovePrefixes(string url)
         {
-            foreach (string prefix in UrlPrefixes)
+            foreach (var prefix in UrlPrefixes)
             {
                 if (url.StartsWith(prefix, StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -333,6 +331,4 @@ namespace eLib.Utils
 
 
     }
-
-   
 }

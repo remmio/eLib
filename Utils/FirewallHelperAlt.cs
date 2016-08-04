@@ -255,7 +255,6 @@ namespace eLib.Utils
         /// 
         public void RemoveAuthorization(string applicationFullPath)
         {
-
             #region  Parameter checking
             if (applicationFullPath == null)
                 throw new ArgumentNullException(nameof(applicationFullPath));
@@ -387,7 +386,6 @@ namespace eLib.Utils
     
     public class FirewallHelperAlt
     {
-            
         private readonly int[] _portsSocket = { 777, 3306 };
         private readonly string[] _portsName = { "AsyncPort", "MySqlPort" };
         private INetFwProfile _fwProfile;
@@ -439,7 +437,6 @@ namespace eLib.Utils
             {
                 ex.Log();
             }
-                
         }
 
         protected internal void CloseFirewall(string appPath, string appName)
@@ -470,7 +467,6 @@ namespace eLib.Utils
             {
                 ex.Log();
             }
-                
         }
 
         protected internal bool IsAppFound(string appName)
@@ -539,7 +535,6 @@ namespace eLib.Utils
             {
                 ex.Log();
             }
-               
         }
 
         protected internal object GetInstance(string typeName)
@@ -560,7 +555,5 @@ namespace eLib.Utils
                     return null;
             }
         }
-
     }
-    
 }

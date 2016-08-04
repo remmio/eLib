@@ -12,7 +12,6 @@ namespace eLib.Utils
     /// </summary>
     public static class EnumsHelper
     {
-
         /// <summary>
         /// Trouver un Enum a Partir de son string : Color colorEnum = "Red".ToEnum<Color/>();
         /// </summary>
@@ -29,7 +28,7 @@ namespace eLib.Utils
             var nAttributes = eValue.GetType().GetField(eValue.ToString()).GetCustomAttributes(typeof(ResumeAttribute), false);
 
             if (nAttributes.Any()) return ((ResumeAttribute)nAttributes.First()).Description;
-                
+
             var oTi = CultureInfo.CurrentCulture.TextInfo;
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));
         }
@@ -42,7 +41,7 @@ namespace eLib.Utils
             var nAttributes = eValue.GetType().GetField(eValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
 
             if (nAttributes.Any()) return ((DescriptionAttribute) nAttributes.First()).Description;
-           
+
             var oTi = CultureInfo.CurrentCulture.TextInfo;
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));
         }
@@ -53,7 +52,7 @@ namespace eLib.Utils
         public static IEnumerable<KeyValuePair<string, Enum>> GetAllValuesAndDescriptions<TEnum>() where TEnum : struct, IConvertible, IComparable, IFormattable
         {
             if (!typeof(TEnum).IsEnum) throw new ArgumentException("TEnum must be an Enumeration type");
-           
+
             return Enum.GetValues(typeof (TEnum))
                        .Cast<Enum>()
                        .Select(e => new KeyValuePair<string, Enum>(e.Description(), e));
@@ -81,7 +80,6 @@ namespace eLib.Utils
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));
         }
     }
-
 }
 
 

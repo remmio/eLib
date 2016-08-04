@@ -12,6 +12,6 @@ namespace eLib.Interfaces
 
         Task<bool> Delete<T>(T item);
 
-        Task<bool> Search<T>(T item);        
+        Task<bool> Search<T>(T item);
     }
 }

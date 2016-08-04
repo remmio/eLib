@@ -10,7 +10,6 @@ namespace eLib.Utils
     /// </summary>
     public static class DateTimeHelper
     {
-
         #region Extention Mine
 
 
@@ -56,7 +55,7 @@ namespace eLib.Utils
                 default:
                     throw new ArgumentOutOfRangeException(nameof(interval), interval, null);
             }
-           
+
             lists.AddRange(from date in EachMonth(@from, thru, (int)interval)
                            let periode = Interval(date, interval)
                            select new KeyValuePair<string, KeyValuePair<DateTime, DateTime>>(periode.Key, new KeyValuePair<DateTime, DateTime>(date, periode.Value)));
@@ -139,10 +138,10 @@ namespace eLib.Utils
         {
             if (timeSpan == TimeSpan.Zero)
                 return "0";
-         
+
             var hours = (int) timeSpan.TotalHours;
             var minutes = timeSpan.Minutes;
-            
+
             return hours > 0 ? $"{hours} hrs {minutes} mins" : $"{minutes} minutes";
         }
 
@@ -242,16 +241,15 @@ namespace eLib.Utils
         {
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
                 yield return day;
-           
         }
-       
+
         public static IEnumerable<DateTime> EachWeek(DateTime from, DateTime thru, int interval = 1)
         {
             if (interval == 0)
                 throw new NotSupportedException("Interval can not be zero");
 
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(interval * 7))
-                yield return day;            
+                yield return day;
         }
 
         /// <summary>
@@ -579,7 +577,7 @@ namespace eLib.Utils
 
         public static DateTime StartOfWeek(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
         {
-            int diff = date.DayOfWeek - startOfWeek;
+            var diff = date.DayOfWeek - startOfWeek;
             if (diff < 0)
                 diff += 7;
 

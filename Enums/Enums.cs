@@ -211,6 +211,4 @@ namespace eLib.Enums
         Prefix,
         Suffix
     }
-
-
 }

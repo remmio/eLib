@@ -6,7 +6,6 @@ namespace eLib.Caching
     public static class CacheStore
 
     {
-
         /// <summary>
 
         /// In-memory cache dictionary
@@ -30,11 +29,9 @@ namespace eLib.Caching
         static CacheStore()
 
         {
-
             Cache = new Dictionary<string, object>();
 
             Sync = new object();
-
         }
 
 
@@ -54,17 +51,13 @@ namespace eLib.Caching
         public static bool Exists<T>(string key) where T : class
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
             lock (Sync)
 
             {
-
                 return Cache.ContainsKey(type.Name + key);
-
             }
-
         }
 
 
@@ -82,17 +75,13 @@ namespace eLib.Caching
         public static bool Exists<T>() where T : class
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
             lock (Sync)
 
             {
-
                 return Cache.ContainsKey(type.Name);
-
             }
-
         }
 
 
@@ -110,13 +99,11 @@ namespace eLib.Caching
         public static T Get<T>() where T : class
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(type.Name) == false)
 
                     throw new ApplicationException("An object of the desired type does not exist: " + type.Name);
@@ -126,13 +113,9 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     return (T)Cache[type.Name];
-
                 }
-
             }
-
         }
 
 
@@ -152,13 +135,11 @@ namespace eLib.Caching
         public static T Get<T>(string key) where T : class
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(key + type.Name) == false)
 
                     throw new ApplicationException(String.Format("An object with key '{0}' does not exists", key));
@@ -166,13 +147,9 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     return (T)Cache[key + type.Name];
-
                 }
-
             }
-
         }
 
 
@@ -190,15 +167,13 @@ namespace eLib.Caching
         public static T Create<T>(string key, params object[] constructorParameters) where T : class
 
         {
+            var type = typeof(T);
 
-            Type type = typeof(T);
-
-            T value = (T)Activator.CreateInstance(type, constructorParameters);
+            var value = (T)Activator.CreateInstance(type, constructorParameters);
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(key + type.Name))
 
                     throw new ApplicationException(String.Format("An object with key '{0}' already exists", key));
@@ -206,15 +181,11 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     Cache.Add(key + type.Name, value);
-
                 }
-
             }
 
             return value;
-
         }
 
 
@@ -232,17 +203,15 @@ namespace eLib.Caching
         public static T Create<T>(params object[] constructorParameters) where T : class
 
         {
+            var type = typeof(T);
 
-            Type type = typeof(T);
-
-            T value = (T)Activator.CreateInstance(type, constructorParameters);
+            var value = (T)Activator.CreateInstance(type, constructorParameters);
 
 
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(type.Name))
 
                     throw new ApplicationException(String.Format("An object of type '{0}' already exists", type.Name));
@@ -250,17 +219,13 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     Cache.Add(type.Name, value);
-
                 }
-
             }
 
 
 
             return value;
-
         }
 
 
@@ -268,8 +233,7 @@ namespace eLib.Caching
         public static void Add<T>(string key, T value)
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
 
 
@@ -280,7 +244,6 @@ namespace eLib.Caching
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(key + type.Name))
 
                     throw new ApplicationException(String.Format("An object with key '{0}' already exists", key));
@@ -288,13 +251,9 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     Cache.Add(key + type.Name, value);
-
                 }
-
             }
-
         }
 
 
@@ -310,15 +269,13 @@ namespace eLib.Caching
         public static void Remove<T>()
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
 
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(type.Name) == false)
 
                     throw new ApplicationException(String.Format("An object of type '{0}' does not exists in cache", type.Name));
@@ -327,7 +284,6 @@ namespace eLib.Caching
 
                     Cache.Remove(type.Name);
             }
-
         }
 
 
@@ -345,15 +301,13 @@ namespace eLib.Caching
         public static void Remove<T>(string key)
 
         {
-
-            Type type = typeof(T);
+            var type = typeof(T);
 
 
 
             lock (Sync)
 
             {
-
                 if (Cache.ContainsKey(key + type.Name) == false)
 
                     throw new ApplicationException(String.Format("An object with key '{0}' does not exists in cache", key));
@@ -361,14 +315,9 @@ namespace eLib.Caching
                 lock (Sync)
 
                 {
-
                     Cache.Remove(key + type.Name);
-
                 }
-
             }
-
         }
-
     }
 }

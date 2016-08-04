@@ -12,17 +12,14 @@ namespace eLib.Interfaces
         /// </summary>
         bool IsDeleted { get; set; }
 
-
         /// <summary>
         /// Guid du Suprimeur
         /// </summary>
         Guid? DeletedBy { get; set; }
 
-
         /// <summary>
         /// Date de Supression
         /// </summary>
         DateTime? DateDelete { get; set; }
-
     }
 }

@@ -36,7 +36,6 @@ namespace eLib.Crud
 
     public class Product:BaseEntity
     {
-       
-    }
 
+    }
 }

@@ -36,7 +36,7 @@ namespace eLib.Collections
             int maxDepth,
             int depth) where TEntity : class
         {
-            ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "e");
+            var parameter = Expression.Parameter(typeof(TEntity), "e");
             Expression<Func<TEntity, bool>> predicate;
 
             if (rootItemId != null)
@@ -132,5 +132,4 @@ namespace eLib.Collections
           object rootItemId,
           int maxDepth) where TEntity : class => CreateHierarchy(allItems, null, propertyNameId, propertyNameParentId, rootItemId, maxDepth, 0);
     }
-
 }

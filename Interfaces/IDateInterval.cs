@@ -6,10 +6,7 @@ namespace eLib.Interfaces
     {
         DateTime? StartDate { get; set; }
 
-
         DateTime? EndDate { get; set; }
-
-
 
 
     }

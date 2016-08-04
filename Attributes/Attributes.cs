@@ -3,7 +3,6 @@ using System.ComponentModel;
 
 namespace eLib.Attributes
 {
- 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class NotTested : Attribute
     {
@@ -15,14 +14,11 @@ namespace eLib.Attributes
         }
     }
 
-
-
     public sealed class ResumeAttribute : DescriptionAttribute
-    {   
+    {
         public ResumeAttribute(string description):base(description)
         {
-            
+
         }
     }
-    
 }

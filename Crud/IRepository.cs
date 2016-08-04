@@ -10,9 +10,8 @@ namespace eLib.Crud
     /// Generic entity repository abstraction.
     /// </summary>
     /// <typeparam name="TEntity">The entity type.</typeparam>
-    public interface IRepository<TEntity> where TEntity : BaseEntity 
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-
         #region CRUD
 
         /// <summary>
@@ -47,7 +46,6 @@ namespace eLib.Crud
         Task<IEnumerable<TEntity>> GetAll();
 
         #endregion
-
 
         #region EVENTS
 

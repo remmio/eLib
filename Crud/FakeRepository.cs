@@ -17,7 +17,6 @@ namespace eLib.Crud
     /// <typeparam name="TEntity">The entity type.</typeparam>
     public class FakeRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-
         #region EVENTS
 
         public event EventHandler<EventArgs<TEntity>> Added;
@@ -28,7 +27,6 @@ namespace eLib.Crud
         public event EventHandler<CancelEventArgs<TEntity>> Updating;
 
         #endregion
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeRepository{TEntity}"/> class.
@@ -100,7 +98,6 @@ namespace eLib.Crud
         {
             return Entities.Values.ToList();
         }
-
 
         /// <summary>
         /// Removes the entity with the specified id.

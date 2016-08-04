@@ -12,7 +12,6 @@ namespace eLib.Utils
 {
     public partial class NetworkHelper
     {
-
         private static readonly List<Ping> Pingers = new List<Ping>();
         private static int _instances;
 
@@ -98,7 +97,6 @@ namespace eLib.Utils
 
             Pingers.Clear();
         }
-
     }
 
 
@@ -166,7 +164,6 @@ namespace eLib.Utils
     {
         public static List<string> StartSearch()
         {
-
             //Gets the machine names that are connected on LAN 
 
             var netUtility = new Process
@@ -200,6 +197,5 @@ namespace eLib.Utils
             netUtility.WaitForExit(1000);
                 return ips; 
         }
-
      }
 }

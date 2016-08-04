@@ -4,14 +4,11 @@ using System.Text.RegularExpressions;
 using PhoneNumbers;
 
 namespace eLib.Utils {
-
-
     /// <summary>
     /// 
     /// </summary>
     public static class InputHelper
     {
-
         /// <summary>
         /// Verifie si c'est un numero de telephoone valid
         /// </summary>
@@ -115,8 +112,6 @@ namespace eLib.Utils {
         {
             return RegionInfo.CurrentRegion.ISOCurrencySymbol;
         }
-
-
         
 
     }

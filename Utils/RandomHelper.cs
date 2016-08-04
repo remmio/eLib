@@ -149,6 +149,5 @@ namespace eLib.Utils
                     .Select(culture => new RegionInfo(culture.LCID))
                         .Select(region => region.EnglishName);
         }
-
     }
 }

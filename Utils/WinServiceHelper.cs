@@ -20,7 +20,7 @@ namespace eLib.Utils
                {
                    if (!IsElevated())
                    {
-                       onStartHandler.Invoke(new ErrorEventArgs(new CoolException("Please restart application as administrator")));
+                       onStartHandler.Invoke(new ErrorEventArgs(new UxException("Please restart application as administrator")));
                        return;
                    }
 
@@ -36,11 +36,11 @@ namespace eLib.Utils
                                AddFirewallExeption(servicePath + ".exe", Path.GetFileName(servicePath));
 
                                onStartHandler.Invoke(EventArgs.Empty);
-                           });                           
+                           });
                            return;
                        }
                    }
-                   
+
                    InstallService(servicePath, args =>
                    {
                        try
@@ -66,12 +66,12 @@ namespace eLib.Utils
                            exception.Log();
                            onStartHandler.Invoke(new ErrorEventArgs(exception));
                        }
-                   });                   
+                   });
                }
                catch (Exception exception)
-               {                  
+               {
                    exception.Log();
-                   UnInstallService(servicePath, args => onStartHandler.Invoke(new ErrorEventArgs(exception)));                   
+                   UnInstallService(servicePath, args => onStartHandler.Invoke(new ErrorEventArgs(exception)));
                }
            });
         }
@@ -103,7 +103,7 @@ namespace eLib.Utils
         public static Operation ServiceStatus(string serviceName)
         {
             try
-            {              
+            {
                 using (var controller = new ServiceController(serviceName))
                 {
                     switch (controller.Status)
@@ -113,22 +113,22 @@ namespace eLib.Utils
 
                         case ServiceControllerStatus.Stopped:
                             return Operation.Failed(ServiceControllerStatus.Stopped.Description());
-                    
+
                         case ServiceControllerStatus.Paused:
                             return Operation.Failed(ServiceControllerStatus.Paused.Description());
-                  
+
                         case ServiceControllerStatus.StopPending:
                             return Operation.Failed(ServiceControllerStatus.StopPending.Description());
-                   
+
                         case ServiceControllerStatus.StartPending:
                             return Operation.Failed(ServiceControllerStatus.StartPending.Description());
-                    
+
                         case ServiceControllerStatus.ContinuePending:
                             return Operation.Failed(ServiceControllerStatus.ContinuePending.Description());
-                   
+
                         case ServiceControllerStatus.PausePending:
                             return Operation.Failed(ServiceControllerStatus.PausePending.Description());
-                   
+
                         default:
                             return Operation.Failed(ServiceControllerStatus.Stopped.Description());
                      }
@@ -167,7 +167,6 @@ namespace eLib.Utils
             //var args3 = @"netsh advfirewall firewall add rule name=""" + appName + @""" dir=in action=allow program=""" + appExePath +
             //            @""" enable=yes";
 
-            
 
             //await RunCmd("cmd.exe", args1);
             //await RunCmd("cmd.exe", args2);
@@ -199,12 +198,12 @@ namespace eLib.Utils
         public static async void RunCmd(string path, string args, Action<EventArgs> onComplete)
         {
             await Task.Run(() =>
-            { 
+            {
                 try
                 {
                     if (!IsElevated())
                     {
-                        onComplete.Invoke(new ErrorEventArgs(new CoolException("Please restart application as administrator")));
+                        onComplete.Invoke(new ErrorEventArgs(new UxException("Please restart application as administrator")));
                         return;
                     }
 
@@ -227,7 +226,7 @@ namespace eLib.Utils
 
                     process.Start();
                     process.WaitForExit(3 * 1000);
-                    
+
                     onComplete.Invoke(EventArgs.Empty);
                 }
                 catch (Exception exception)
@@ -245,6 +244,5 @@ namespace eLib.Utils
                 (identity).IsInRole
                 (WindowsBuiltInRole.Administrator);
         }
-        
     }
 }

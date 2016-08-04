@@ -25,7 +25,6 @@ namespace eLib.Caching
 
         public int NumberOfExpiryRuns { get; private set; }
 
-
         public bool ExpiryThreadIsRunning => _expiryThread != null && _expiryThread.IsAlive;
 
         private void RestartWaiting()

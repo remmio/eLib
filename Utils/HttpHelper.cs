@@ -30,7 +30,7 @@ namespace eLib.Utils
 
                 var response = await client.GetAsync(path);
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return await response.Content.ReadAsAsync<T>();
             }           
         }
@@ -48,7 +48,7 @@ namespace eLib.Utils
 
                 var response = await client.GetAsync(path);
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
             }
         }
 
@@ -71,7 +71,7 @@ namespace eLib.Utils
 
                 var response = await client.PostAsync(path, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return await response.Content.ReadAsAsync<T>();
             }
         }
@@ -95,7 +95,7 @@ namespace eLib.Utils
 
                 var response = await client.PostAsync(path, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return Succes(response.Headers.Location?.ToString());
             }
         }
@@ -119,7 +119,7 @@ namespace eLib.Utils
 
                 var response = await client.PutAsync(objectPath, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return Succes(response.Headers.Location?.ToString());
             }
         }
@@ -133,7 +133,7 @@ namespace eLib.Utils
 
                 var response = await client.DeleteAsync(objectPath);
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return Succes(response.ReasonPhrase);
             }
         }
@@ -179,11 +179,10 @@ namespace eLib.Utils
                 await response.Content.ReadAsStringAsync();
                 Token = string.Empty;
                 if (!response.IsSuccessStatusCode)
-                    throw new RemoteException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
+                    throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return Succes(response.ReasonPhrase);
             }
         }
-
     }
 
     public class TokenModel

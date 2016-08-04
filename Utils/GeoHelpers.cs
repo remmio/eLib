@@ -10,13 +10,12 @@ namespace eLib.Utils
 {
     public class GeoHelpers
     {
-
         [DebuggerNonUserCode]
         public static async Task< KeyValuePair<double, double>> GetMyGeoLocation()
         {
             try
             {
-               await Task.Run(() => { 
+               await Task.Run(() => {
                 //create a request to geoiptool.com
                 var request = WebRequest.Create(new Uri("http://geoiptool.com")) as HttpWebRequest;
 
@@ -28,10 +27,9 @@ namespace eLib.Utils
                     if (webResponse != null)
                         using (var reader = new StreamReader(webResponse.GetResponseStream()))
                         {
-
                             var doc = new XmlDocument();
                             doc.Load(reader);
-                            
+
                             var nodes = doc.GetElementsByTagName("marker");
 
                             //Guard.AssertCondition(nodes.Count > 0, "nodes", new object());
@@ -56,14 +54,14 @@ namespace eLib.Utils
 
                             return new KeyValuePair<double, double>(Convert.ToDouble(marker?.GetAttribute("lat")), Convert.ToDouble(marker?.GetAttribute("lng")));
                            //}
-                       
+
                       }
                 return new KeyValuePair<double, double>() ;
                });
             }
             catch (Exception ex)
             {
-                ex.Log();                
+                ex.Log();
             }
             return new KeyValuePair<double, double>();
         }

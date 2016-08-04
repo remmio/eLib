@@ -11,20 +11,17 @@ namespace eLib.Utils
 
     public static class IpHelper
     {
-
         public static async Task<string> GetPublicIp()
         {
             try
             {
-                var ip = (await new WebClient().DownloadStringTaskAsync(new Uri("http://checkip.amazonaws.com/"))).Replace("\n", "");
-                return ip;
+                return (await new WebClient().DownloadStringTaskAsync(new Uri("http://checkip.amazonaws.com/"))).Replace("\n", "");
             }
             catch (Exception)
             {
                 return string.Empty;
-            }           
+            }
         }
-
 
         public static string GetLanIp()
         {
@@ -33,12 +30,10 @@ namespace eLib.Utils
                 .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)?.ToString();
         }
 
-
         public static bool IsOnline()
         {
             return NetworkInterface.GetIsNetworkAvailable();
         }
-
 
         internal static string GetLocalIPv4(NetworkInterfaceType type = NetworkInterfaceType.Ethernet)
         {
@@ -65,7 +60,5 @@ namespace eLib.Utils
             var isonline = IsOnline();
             return ip1 + ip2 + lanIp + wifIp + isonline;
        }
-
-
     }
 }

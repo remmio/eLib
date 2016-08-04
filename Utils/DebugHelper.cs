@@ -16,7 +16,7 @@ namespace eLib.Utils
         private static Logger Logger { get; } = new Logger();
 
         public static void SaveLog(string filepath)
-        {           
+        {
             Logger.SaveLog(filepath);
         }
 
@@ -37,7 +37,7 @@ namespace eLib.Utils
                 {
                     Console.WriteLine(e);
                 }
-            });           
+            });
         }
 
         /// <summary>

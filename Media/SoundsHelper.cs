@@ -9,7 +9,6 @@ namespace eLib.Media
     /// </summary>
     public class SoundsHelper
     {
-
         /// <summary>
         /// 
         /// </summary>

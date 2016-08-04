@@ -6,7 +6,6 @@ namespace eLib.Utils
 {
     public static class RegistryHelper
     {
-
         private static readonly string WindowsStartupRun = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private static readonly string ApplicationName = "eApp";
         private static readonly string ApplicationPath = $"\"{Application.ExecutablePath}\"";
@@ -43,7 +42,7 @@ namespace eLib.Utils
         {
             try
             {
-                using (RegistryKey regkey = Registry.CurrentUser.OpenSubKey(WindowsStartupRun, true))
+                using (var regkey = Registry.CurrentUser.OpenSubKey(WindowsStartupRun, true))
                 {
                     if (regkey != null)
                     {
@@ -174,7 +173,7 @@ namespace eLib.Utils
 
         public static void CreateRegistry(string path, string name, string value)
         {
-            using (RegistryKey rk = Registry.CurrentUser.CreateSubKey(path))
+            using (var rk = Registry.CurrentUser.CreateSubKey(path))
             {
                 if (rk != null)
                 {
@@ -190,7 +189,7 @@ namespace eLib.Utils
 
         public static void CreateRegistry(string path, string name, int value)
         {
-            using (RegistryKey rk = Registry.CurrentUser.CreateSubKey(path))
+            using (var rk = Registry.CurrentUser.CreateSubKey(path))
             {
                 if (rk != null)
                 {
@@ -201,7 +200,7 @@ namespace eLib.Utils
 
         public static void RemoveRegistry(string path)
         {
-            using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(path))
+            using (var rk = Registry.CurrentUser.OpenSubKey(path))
             {
                 if (rk != null)
                 {
@@ -212,7 +211,7 @@ namespace eLib.Utils
 
         public static bool CheckRegistry(string path, string name = null, string value = null)
         {
-            string registryValue = GetRegistryValue(path, name);
+            var registryValue = GetRegistryValue(path, name);
 
             if (registryValue != null)
             {
@@ -224,7 +223,7 @@ namespace eLib.Utils
 
         public static string GetRegistryValue(string path, string name = null)
         {
-            using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(path))
+            using (var rk = Registry.CurrentUser.OpenSubKey(path))
             {
                 if (rk != null)
                 {
@@ -234,8 +233,6 @@ namespace eLib.Utils
 
             return null;
         }
-
-
 
 
 

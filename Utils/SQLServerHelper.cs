@@ -9,7 +9,6 @@ namespace eLib.Utils
 {
     public static class SqlServerHelper
     {
-
         public static void StartSqlBrowserService(List<string> activeMachines)
         {
             var myService = new ServiceController {ServiceName = "SQLBrowser"};
@@ -82,14 +81,12 @@ namespace eLib.Utils
             }
         }
 
-
         public static void SqlTestInfo()
         {
             var instance = SqlDataSourceEnumerator.Instance;
             var table = instance.GetDataSources();
             DisplayData(table);
         }
-
 
         private static void DisplayData(DataTable table)
         {
@@ -100,6 +97,5 @@ namespace eLib.Utils
                 Console.WriteLine();
             }
         }
-
     }
 }

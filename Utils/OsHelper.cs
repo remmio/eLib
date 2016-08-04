@@ -77,7 +77,6 @@ namespace eLib.Utils
             return (OsVersion.Major == 6 && OsVersion.Minor >= 2) || OsVersion.Major > 6;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -91,7 +90,5 @@ namespace eLib.Utils
 
             return Regex.IsMatch(ip.Trim(), pattern);
         }
-
-
     }
 }

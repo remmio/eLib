@@ -108,7 +108,7 @@ namespace eLib.FilesHelper
         {
             return IsValidFile(filePath, typeof(TextFileExtensions));
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -163,7 +163,6 @@ namespace eLib.FilesHelper
 
                 try
                 {
-
                     if (!string.IsNullOrEmpty(path))
                     {
                         path = Path.GetDirectoryName(path);
@@ -185,7 +184,7 @@ namespace eLib.FilesHelper
         }
 
         public static string BrowseLicence(string title, string path, string initialDirectory = default(string))
-        {   
+        {
             using (var ofd = new OpenFileDialog())
             {
                 ofd.Title = title;
@@ -268,7 +267,7 @@ namespace eLib.FilesHelper
             }
             catch (Exception e)
             {
-                e.Log();                        
+                e.Log();
             }
         }
 
@@ -281,10 +280,10 @@ namespace eLib.FilesHelper
         {
             if (!string.IsNullOrEmpty(filepath) && File.Exists(filepath))
             {
-                string filename = Path.GetFileNameWithoutExtension(filepath);
-                string extension = Path.GetExtension(filepath);
-                string newFilename = string.Format("{0}-{1:yyyy-MM}{2}", filename, DateTime.Now, extension);
-                string newFilepath = Path.Combine(destinationFolder, newFilename);
+                var filename = Path.GetFileNameWithoutExtension(filepath);
+                var extension = Path.GetExtension(filepath);
+                var newFilename = string.Format("{0}-{1:yyyy-MM}{2}", filename, DateTime.Now, extension);
+                var newFilepath = Path.Combine(destinationFolder, newFilename);
 
                 if (!File.Exists(newFilepath))
                 {
@@ -303,11 +302,11 @@ namespace eLib.FilesHelper
         {
             if (!string.IsNullOrEmpty(filepath) && File.Exists(filepath))
             {
-                string filename = Path.GetFileNameWithoutExtension(filepath);
-                DateTime dateTime = DateTime.Now;
-                string extension = Path.GetExtension(filepath);
-                string newFilename = string.Format("{0}-{1:yyyy-MM}-W{2:00}{3}", filename, dateTime, dateTime.DayOfYear, extension);
-                string newFilepath = Path.Combine(destinationFolder, newFilename);
+                var filename = Path.GetFileNameWithoutExtension(filepath);
+                var dateTime = DateTime.Now;
+                var extension = Path.GetExtension(filepath);
+                var newFilename = string.Format("{0}-{1:yyyy-MM}-W{2:00}{3}", filename, dateTime, dateTime.DayOfYear, extension);
+                var newFilepath = Path.Combine(destinationFolder, newFilename);
 
                 if (!File.Exists(newFilepath))
                 {

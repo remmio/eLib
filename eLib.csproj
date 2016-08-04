@@ -129,7 +129,7 @@
     <Compile Include="Enums\PeriodInterval.cs" />
     <Compile Include="Enums\TimePriority.cs" />
     <Compile Include="Enums\WorkStatus.cs" />
-    <Compile Include="Exceptions\CoolException.cs" />
+    <Compile Include="Exceptions\UxException.cs" />
     <Compile Include="Exceptions\Operation.cs" />
     <Compile Include="FilesHelper\FilesHelper.cs" />
     <Compile Include="FilesHelper\RessourceHelper.cs" />
@@ -164,6 +164,7 @@
     </Compile>
     <Compile Include="Security\Credentials.cs" />
     <Compile Include="Security\WebCredentials.cs" />
+    <Compile Include="Tasks\TaskExt.cs" />
     <Compile Include="Tasks\TasksHelper.cs" />
     <Compile Include="Utils\FirewallHelperAlt.cs" />
     <Compile Include="Utils\DateTimeHelper.cs" />

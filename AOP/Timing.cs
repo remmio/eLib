@@ -3,7 +3,7 @@
 
 namespace eLib.AOP
 {
-   
+
     //[Serializable]
     ////[MulticastAttributeUsage(MulticastTargets.Method)]
     //public class Timing //: OnMethodBoundaryAspect
@@ -41,7 +41,7 @@ namespace eLib.AOP
     //            Debug.WriteLine(
     //                $"[{_origine}] took {_stopWatch.ElapsedMilliseconds}ms to execute");
     //        }
-            
+
 
     //        base.OnExit(args);
     //    }

@@ -6,13 +6,11 @@ namespace eLib.Security
 {
     public static class Credentials
     {
-
         public static string Get() => Get("Token");
 
         public static bool Set(string token) => Set("Token", token);
 
         public static bool Delete() => Delete("Token");
-
 
         #region IMPLEMENTATION
 

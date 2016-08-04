@@ -4,12 +4,11 @@ using System.Windows.Media;
 
 namespace eLib.Utils
 {
-
     /// <summary>
     /// FindVisual
     /// </summary>
     public class FindVisual
-    {  
+    {
         /// <summary>
         /// 
         /// </summary>
@@ -25,7 +24,7 @@ namespace eLib.Utils
                 if (child is T)
                     yield return child as T;
                 //{
-                    
+
                 //}
                 //var children = child as T;
                 //if (children != null)
@@ -36,5 +35,4 @@ namespace eLib.Utils
             }
         }
     }
-    
 }

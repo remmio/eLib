@@ -25,5 +25,4 @@ namespace eLib.Crud
         public string Port { get; set; }
         public bool IsSignalRSupported { get; set; }
     }
-
 }

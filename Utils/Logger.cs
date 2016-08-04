@@ -130,7 +130,7 @@ namespace eLib.Utils
             lock (_loggerLock)
             {
                 if (_sbMessages != null && _sbMessages.Length > 0) return _sbMessages.ToString();
-                             
+
                 return string.Empty;
             }
         }

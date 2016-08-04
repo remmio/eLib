@@ -1,8 +1,5 @@
 ﻿
-
-
 namespace eLib.Enums {
-
     /// <summary>
     /// Type de Document
     /// </summary>

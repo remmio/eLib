@@ -23,7 +23,7 @@ namespace eLib.Crud
     {
         public CrudArgs()
         {
-            
+
         }
         public CrudArgs(Guid itemGuid, Crud cause, Guid notifyGuid, int count = 0)
         {
@@ -32,11 +32,10 @@ namespace eLib.Crud
             NotifyGuid = notifyGuid;
             Count = count;
         }
-            
+
         public Guid NotifyGuid { get; set; }
         public Guid ItemGuid { get; set; }
         public Crud Cause { get; set; }
         public int Count { get; set; }
     }
-
 }

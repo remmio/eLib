@@ -541,5 +541,4 @@ namespace eLib.Collections
         /// <returns> true if the priority queue is empty, false if not. </returns>
         bool IsEmpty();
     }
-    
 }

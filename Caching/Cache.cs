@@ -89,7 +89,7 @@ namespace eLib.Caching
         protected virtual CacheValue<TKey, TValue> SetValueUnlocked(TKey key, TValue value)
         {
             _lastCacheAccess = DateTime.Now;
-            CacheValue<TKey, TValue> cacheValue = GetCacheValueUnlocked(key);
+            var cacheValue = GetCacheValueUnlocked(key);
             if (cacheValue == null)
             {
                 cacheValue = new CacheValue<TKey, TValue>(value);

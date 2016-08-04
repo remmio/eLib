@@ -4,18 +4,15 @@ using System.Net.Mail;
 using System.Text;
 
 namespace eLib.Utils {
-
     /// <summary>
     /// Envoyeur des Emails
     /// </summary>
     public static class EmailHelper
     {
-
         /// <summary>
         /// 
         /// </summary>
         public static string FromServeur { get; set; } = "gestioninscriptions@gmail.com";
-
 
         /// <summary>
         /// Envoyer un Email
@@ -53,10 +50,5 @@ namespace eLib.Utils {
                 //return false;
             }
         }
-
-
-
-
-
     }
 }

@@ -5,7 +5,6 @@ namespace eLib.Collections
 {
     public class Card : BindableBase
     {
-
         #region Fields
 
         private object _item5;
@@ -17,7 +16,6 @@ namespace eLib.Collections
         private List<Child> _children;
 
         #endregion
-
 
         public object Item1
         {
@@ -58,7 +56,6 @@ namespace eLib.Collections
             }
         }
 
-
         public List<Child> Children
         {
             get { return _children; }
@@ -79,6 +76,6 @@ namespace eLib.Collections
 
     public class GrandChild : Card
     {
-            
+
     }
 }

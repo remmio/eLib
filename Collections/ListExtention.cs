@@ -10,7 +10,6 @@ namespace eLib.Collections
     /// </summary>
     public static class ListExtention
     {
-
         /// <summary>
         /// 
         /// </summary>
@@ -41,8 +40,6 @@ namespace eLib.Collections
             return table;
         }
 
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -67,6 +64,5 @@ namespace eLib.Collections
 
             return table.Rows[0];
         }
-
     }
 }

@@ -8,13 +8,11 @@ using System.Windows.Media.Imaging;
 
 namespace eLib.Utils
 {
-    
     /// <summary>
     /// 
     /// </summary>
     public static class ImagesHelper
     {
-        
         #region Image To Bytes
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace eLib.Utils
         /// <returns></returns>
         public static byte[] BitmapToByte2 ( BitmapImage bitmapImage )
         {
-
             byte[] data;
             var encoder = new JpegBitmapEncoder ();
             encoder.Frames.Add (BitmapFrame.Create (bitmapImage));
@@ -133,9 +130,9 @@ namespace eLib.Utils
                 return ms.ToArray();
             }
             catch (Exception)
-            {               
+            {
                return new byte[0] ;
-            }                          
+            }
         }
 
         /// <summary>
@@ -146,8 +143,7 @@ namespace eLib.Utils
         public static Image ByteArrayToImage(byte[] byteArrayIn)
         {
             var ms = new MemoryStream(byteArrayIn);
-            var returnImage = Image.FromStream(ms);
-            return returnImage;
+            return Image.FromStream(ms);
         }
 
 
@@ -184,7 +180,7 @@ namespace eLib.Utils
 
             return null;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -219,7 +215,7 @@ namespace eLib.Utils
 
             //Test to see if we have the same size of image
             if (bmp1.Size != bmp2.Size) cr = CompareResult.CiSizeMismatch;
- 
+
             else
             {
                 //Sizes are the same so start comparing pixels
@@ -242,7 +238,7 @@ namespace eLib.Utils
                     "PNG (*.png)|*.png|JPEG (*.jpg, *.jpeg, *.jpe, *.jfif)|*.jpg;*.jpeg;*.jpe;*.jfif|GIF (*.gif)|*.gif|BMP (*.bmp)|*.bmp|TIFF (*.tif, *.tiff)|*.tif;*.tiff|" +
                     "All files (*.*)|*.*";
 
-                if (ofd.ShowDialog() == DialogResult.OK) return ofd.FileName;               
+                if (ofd.ShowDialog() == DialogResult.OK) return ofd.FileName;
             }
             return null;
         }
@@ -253,7 +249,7 @@ namespace eLib.Utils
         public static ImageFormat GetImageFormat(string filePath)
         {
             ImageFormat imageFormat = ImageFormat.Png;
-            string ext = FilesHelper.FilesHelper.GetFilenameExtension(filePath);
+            var ext = FilesHelper.FilesHelper.GetFilenameExtension(filePath);
 
             if (!string.IsNullOrEmpty(ext))
             {
@@ -299,11 +295,11 @@ namespace eLib.Utils
         /// </summary>
         public static string SaveImageFileDialog(Image img, string filePath = default(string))
         {
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            using (var sfd = new SaveFileDialog())
             {
                 if (!string.IsNullOrEmpty(filePath))
                 {
-                    string folder = Path.GetDirectoryName(filePath);
+                    var folder = Path.GetDirectoryName(filePath);
                     if (!string.IsNullOrEmpty(folder))
                     {
                         sfd.InitialDirectory = folder;
@@ -362,7 +358,7 @@ namespace eLib.Utils
                 return img;
             }
 
-            Bitmap bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             bmp.SetResolution(img.HorizontalResolution, img.VerticalResolution);
 
             using (img)
@@ -374,7 +370,7 @@ namespace eLib.Utils
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.CompositingMode = CompositingMode.SourceOver;
 
-                using (ImageAttributes ia = new ImageAttributes())
+                using (var ia = new ImageAttributes())
                 {
                     ia.SetWrapMode(WrapMode.TileFlipXY);
                     g.DrawImage(img, new Rectangle(0, 0, width, height), 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
@@ -397,8 +393,8 @@ namespace eLib.Utils
         /// </summary>
         public static Image ResizeImageByPercentage(Image img, float percentageWidth, float percentageHeight)
         {
-            int width = (int)(percentageWidth / 100 * img.Width);
-            int height = (int)(percentageHeight / 100 * img.Height);
+            var width = (int)(percentageWidth / 100 * img.Width);
+            var height = (int)(percentageHeight / 100 * img.Height);
             return ResizeImage(img, width, height);
         }
 
@@ -434,15 +430,15 @@ namespace eLib.Utils
             }
             else
             {
-                double ratioX = (double)width / img.Width;
-                double ratioY = (double)height / img.Height;
+                var ratioX = (double)width / img.Width;
+                var ratioY = (double)height / img.Height;
                 ratio = ratioX < ratioY ? ratioX : ratioY;
                 newWidth = (int)(img.Width * ratio);
                 newHeight = (int)(img.Height * ratio);
             }
 
-            int newX = 0;
-            int newY = 0;
+            var newX = 0;
+            var newY = 0;
 
             if (centerImage)
             {
@@ -450,13 +446,13 @@ namespace eLib.Utils
                 newY += (int)((height - img.Height * ratio) / 2);
             }
 
-            Bitmap bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             bmp.SetResolution(img.HorizontalResolution, img.VerticalResolution);
 
             using (Graphics g = Graphics.FromImage(bmp))
             using (img)
             {
-                g.Clear(backColor);               
+                g.Clear(backColor);
                 g.DrawImage(img, newX, newY, newWidth, newHeight);
             }
 
@@ -479,11 +475,11 @@ namespace eLib.Utils
                 return img;
             }
 
-            double ratioX = (double)width / img.Width;
-            double ratioY = (double)height / img.Height;
-            double ratio = ratioX < ratioY ? ratioX : ratioY;
-            int newWidth = (int)(img.Width * ratio);
-            int newHeight = (int)(img.Height * ratio);
+            var ratioX = (double)width / img.Width;
+            var ratioY = (double)height / img.Height;
+            var ratio = ratioX < ratioY ? ratioX : ratioY;
+            var newWidth = (int)(img.Width * ratio);
+            var newHeight = (int)(img.Height * ratio);
 
             return ResizeImage(img, newWidth, newHeight);
         }
@@ -496,7 +492,7 @@ namespace eLib.Utils
             if (img != null && rect.X >= 0 && rect.Y >= 0 && rect.Width > 0 && rect.Height > 0 &&
                 new Rectangle(0, 0, img.Width, img.Height).Contains(rect))
             {
-                using (Bitmap bmp = new Bitmap(img))
+                using (var bmp = new Bitmap(img))
                 {
                     return bmp.Clone(rect, bmp.PixelFormat);
                 }
@@ -526,12 +522,12 @@ namespace eLib.Utils
         {
             if (img != null && rect.Width > 0 && rect.Height > 0 && gp != null)
             {
-                Bitmap bmp = new Bitmap(rect.Width, rect.Height);
+                var bmp = new Bitmap(rect.Width, rect.Height);
                 bmp.SetResolution(img.HorizontalResolution, img.VerticalResolution);
 
                 using (Graphics g = Graphics.FromImage(bmp))
-                {                   
-                    using (Region region = new Region(gp))
+                {
+                    using (var region = new Region(gp))
                     {
                         g.Clip = region;
                         g.DrawImage(img, new Rectangle(0, 0, rect.Width, rect.Height), rect, GraphicsUnit.Pixel);
@@ -555,19 +551,19 @@ namespace eLib.Utils
                 return (Bitmap)inputImage.Clone();
 
             // Set up old and new image dimensions, assuming upsizing not wanted and clipping OK
-            int oldWidth = inputImage.Width;
-            int oldHeight = inputImage.Height;
-            int newWidth = oldWidth;
-            int newHeight = oldHeight;
-            float scaleFactor = 1f;
+            var oldWidth = inputImage.Width;
+            var oldHeight = inputImage.Height;
+            var newWidth = oldWidth;
+            var newHeight = oldHeight;
+            var scaleFactor = 1f;
 
             // If upsizing wanted or clipping not OK calculate the size of the resulting bitmap
             if (upsize || !clip)
             {
-                double angleRadians = angleDegrees * Math.PI / 180d;
+                var angleRadians = angleDegrees * Math.PI / 180d;
 
-                double cos = Math.Abs(Math.Cos(angleRadians));
-                double sin = Math.Abs(Math.Sin(angleRadians));
+                var cos = Math.Abs(Math.Cos(angleRadians));
+                var sin = Math.Abs(Math.Sin(angleRadians));
                 newWidth = (int)Math.Round(oldWidth * cos + oldHeight * sin);
                 newHeight = (int)Math.Round(oldWidth * sin + oldHeight * cos);
             }
@@ -581,7 +577,7 @@ namespace eLib.Utils
             }
 
             // Create the new bitmap object.
-            Bitmap newBitmap = new Bitmap(newWidth, newHeight, PixelFormat.Format32bppArgb);
+            var newBitmap = new Bitmap(newWidth, newHeight, PixelFormat.Format32bppArgb);
             newBitmap.SetResolution(inputImage.HorizontalResolution, inputImage.VerticalResolution);
 
             // Create the Graphics object that does the work

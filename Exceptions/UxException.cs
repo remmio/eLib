@@ -6,40 +6,36 @@ namespace eLib.Exceptions
     /// <summary>
     /// CoolException
     /// </summary>
-    public class CoolException : Exception
+    public class UxException : Exception
     {
-
         /// <summary>
         /// Exception Concernant des donnees invalides
         /// </summary>
-        public CoolException() { }
-
+        public UxException() { }
 
         /// <summary>
         /// Exception Concernant des donnees invalides
         /// </summary>
         /// <param name="message"></param>
-        public CoolException(string message) : base(message) { }
-
+        public UxException(string message) : base(message) { }
 
         /// <summary>
         /// Exception Concernant des donnees invalides
         /// </summary>
         /// <param name="message"></param>
         /// <param name="inner"></param>
-        public CoolException(string message, Exception inner) : base(message, inner) { }
+        public UxException(string message, Exception inner) : base(message, inner) { }
 
-
-        public static CoolException NotFound(Type obj) => new CoolException(obj.Name + " Not Found");
+        public static UxException NotFound(Type obj) => new UxException(obj.Name + " Not Found");
     }
 
-    public class LicenceException : CoolException
+    public class LicenceException : UxException
     {
         public Type Type { get; set; }
         public int Limit { get; set; }
 
         public LicenceException() { }
-        
+
         public LicenceException(Type type, int typeLimit) : base(type.ToString())
         {
             Type = type;
@@ -53,21 +49,21 @@ namespace eLib.Exceptions
         public LicenceException(string message, Exception inner) : base(message, inner) { }
     }
 
-    public class RemoteException : CoolException
+    public class ApiException : UxException
     {
         public HttpStatusCode StatusCode { get; set; }
         public string ReasonPhrase { get; set; }
         public override string Message { get; }
 
-        public RemoteException() { }
-       
-        public RemoteException(string message) : base(message)
+        public ApiException() { }
+
+        public ApiException(string message) : base(message)
         {
         }
 
-        public RemoteException(string message, Exception inner) : base(message, inner) { }
+        public ApiException(string message, Exception inner) : base(message, inner) { }
 
-        public RemoteException(HttpStatusCode statusCode, string message = default(string), string reasonPhrase = default(string)) : base(reasonPhrase)
+        public ApiException(HttpStatusCode statusCode, string message = default(string), string reasonPhrase = default(string)) : base(reasonPhrase)
         {
             if (!string.IsNullOrEmpty(message))
                 Message = message;

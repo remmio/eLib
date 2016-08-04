@@ -2,6 +2,6 @@
 {
     public interface IRefresh
     {
-        void Refresh();       
+        void Refresh();
     }
 }

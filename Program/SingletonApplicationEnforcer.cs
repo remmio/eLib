@@ -14,7 +14,6 @@ namespace eLib.Program
     /// </summary>
     public class SingletonApplication
     {
-
         /// <summary>
         /// This class allows restricting the number of executables in execution, to one.
         /// </summary>
@@ -43,7 +42,7 @@ namespace eLib.Program
                     throw new ArgumentNullException(nameof(processArgsFunc));
 
                 _processArgsFunc = processArgsFunc;
-                _applicationId = ((GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(), typeof(GuidAttribute), false)).Value; 
+                _applicationId = ((GuidAttribute)Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(), typeof(GuidAttribute), false)).Value;
             }
 
             /// <summary>
@@ -55,10 +54,10 @@ namespace eLib.Program
             public bool ShouldApplicationExit()
             {
                 bool createdNew;
-                string argsWaitHandleName = "ArgsWaitHandle_" + _applicationId;
-                string memoryFileName = "ArgFile_" + _applicationId;
+                var argsWaitHandleName = "ArgsWaitHandle_" + _applicationId;
+                var memoryFileName = "ArgFile_" + _applicationId;
 
-                EventWaitHandle argsWaitHandle = new EventWaitHandle(
+                var argsWaitHandle = new EventWaitHandle(
                     false, EventResetMode.AutoReset, argsWaitHandleName, out createdNew);
 
                 GC.KeepAlive(argsWaitHandle);
@@ -73,12 +72,12 @@ namespace eLib.Program
                     {
                         try
                         {
-                            using (MemoryMappedFile file = MemoryMappedFile.CreateOrOpen(memoryFileName, 10000))
+                            using (var file = MemoryMappedFile.CreateOrOpen(memoryFileName, 10000))
                             {
                                 while (true)
                                 {
                                     argsWaitHandle.WaitOne();
-                                    using (MemoryMappedViewStream stream = file.CreateViewStream())
+                                    using (var stream = file.CreateViewStream())
                                     {
                                         var reader = new BinaryReader(stream);
                                         string args;
@@ -91,11 +90,10 @@ namespace eLib.Program
                                             Debug.WriteLine("Unable to retrieve string. " + ex);
                                             continue;
                                         }
-                                        string[] argsSplit = args.Split(new[] { ArgDelimeter },
+                                        var argsSplit = args.Split(new[] { ArgDelimeter },
                                                                         StringSplitOptions.RemoveEmptyEntries);
                                         _processArgsFunc(argsSplit);
                                     }
-
                                 }
                             }
                         }
@@ -113,9 +111,9 @@ namespace eLib.Program
                     /* Non singleton application instance. 
                      * Should exit, after passing command line args to singleton process, 
                      * via the MemoryMappedFile. */
-                    using (MemoryMappedFile mmf = MemoryMappedFile.OpenExisting(memoryFileName))
+                    using (var mmf = MemoryMappedFile.OpenExisting(memoryFileName))
                     {
-                        using (MemoryMappedViewStream stream = mmf.CreateViewStream())
+                        using (var stream = mmf.CreateViewStream())
                         {
                             var writer = new BinaryWriter(stream);
                             var args = Environment.GetCommandLineArgs();

@@ -12,7 +12,6 @@ namespace eLib.Crud
     /// <typeparam name="TEntity">The entity type.</typeparam>
     public abstract class BaseService<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-            
         #region EVENTS
 
         /// <summary>

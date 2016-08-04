@@ -10,7 +10,6 @@ namespace eLib.Utils
     /// </summary>
     public class RessourcesHelper
     {
-
         /// <summary>
         /// Load a resource WPF-BitmapImage (png, bmp, ...) from embedded resource defined as 'Resource' not as 'Embedded resource'.
         /// </summary>
@@ -20,14 +19,13 @@ namespace eLib.Utils
         public static BitmapImage LoadBitmapFromResource(string pathInApplication, Assembly assembly = null)
         {
             if (assembly == null) assembly = Assembly.GetCallingAssembly();
-            
+
             if (pathInApplication[0] == '/')
             {
                 pathInApplication = pathInApplication.Substring(1);
             }
             return new BitmapImage(new Uri(@"pack://application:,,,/" + assembly.GetName().Name + ";component/" + pathInApplication, UriKind.Absolute));
         }
-
 
         /// <summary>
         /// Get Embedded Ressource in Assembly
@@ -38,15 +36,13 @@ namespace eLib.Utils
         public static string GetEmbeddedResource(string pathInAssembly, Assembly thisAssembly = null)
         {
             if (thisAssembly == null) thisAssembly = Assembly.GetCallingAssembly();
-            
+
             using (var s = thisAssembly.GetManifestResourceStream(pathInAssembly))
             {
                 if (s == null) return null;
                 using (var sr = new StreamReader(s)) return sr.ReadToEnd();
-            }         
+            }
         }
-
-
 
     }
 }

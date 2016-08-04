@@ -1,7 +1,5 @@
 ﻿
-
 namespace eLib.Enums {
-
     /// <summary>
     /// MonthOfYear
     /// </summary>

@@ -6,7 +6,6 @@ namespace eLib.Utils
 {
     public static class RegistrySettings
     {
-
         private static readonly RegistryKey BaseRegistryKey = Registry.CurrentUser;
         private static string _subKey = Assembly.GetEntryAssembly().ToString();
 
@@ -17,7 +16,7 @@ namespace eLib.Utils
         }
 
         public static string Read(string keyName, object defaultValue)
-        {            
+        {
             try
             {
                 // Opening the registry key 
@@ -60,6 +59,5 @@ namespace eLib.Utils
                 return false;
             }
         }
-
     }
 }

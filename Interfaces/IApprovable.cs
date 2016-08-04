@@ -8,7 +8,6 @@ namespace eLib.Interfaces
     /// </summary>
     public interface IApprovable
     {
-    
         /// <summary>
         /// Status de la demande
         /// </summary>
@@ -17,7 +16,7 @@ namespace eLib.Interfaces
         /// <summary>
         /// Message
         /// </summary>
-        string StatusMessage { get; set; }  
+        string StatusMessage { get; set; }
 
         /// <summary>
         /// Guid du reponder
@@ -28,6 +27,5 @@ namespace eLib.Interfaces
         /// Est Supprimer
         /// </summary>
         DateTime? DateResponded { get; set; }
-
     }
 }

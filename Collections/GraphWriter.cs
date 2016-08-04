@@ -3,7 +3,7 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace eLib.Collections
-{ 
+{
     public class GraphWriter
     {
         //from http://stackoverflow.com/questions/8199600/c-sharp-directed-graph-generating-library
