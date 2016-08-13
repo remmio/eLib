@@ -105,7 +105,7 @@ namespace eLib.Utils
        private static CountdownEvent _countdown;
        private static int _upCount;
        private static readonly object LockObj = new object();
-        private static List<KeyValuePair<string, string>> _ips = new List<KeyValuePair<string, string>>();
+        private static readonly List<KeyValuePair<string, string>> _ips = new List<KeyValuePair<string, string>>();
 
         public static void Search()
         {

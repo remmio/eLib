@@ -63,10 +63,7 @@ namespace eLib.Crud
         /// </summary>
         /// <param name="id">The entity id.</param>
         /// <returns><c>true</c> if the repository contains an entity with the specified id; otherwise, <c>false</c>.</returns>
-        public bool Contains(Guid id)
-        {
-            return Entities.ContainsKey(id);
-        }
+        public bool Contains(Guid id) => Entities.ContainsKey(id);
 
         /// <summary>
         /// Gets the entity with the specified id.
@@ -85,28 +82,19 @@ namespace eLib.Crud
         /// </summary>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IQueryable{E}.</returns>
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-        {
-            return Entities.Values.AsQueryable().Where(predicate);
-        }
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate) => Entities.Values.AsQueryable().Where(predicate);
 
         /// <summary>
         /// Gets all entities.
         /// </summary>
         /// <returns>A list of entities.</returns>
-        public async Task<IEnumerable<TEntity>> GetAll()
-        {
-            return Entities.Values.ToList();
-        }
+        public async Task<IEnumerable<TEntity>> GetAll() => Entities.Values.ToList();
 
         /// <summary>
         /// Removes the entity with the specified id.
         /// </summary>
         /// <param name="id">The entity id.</param>
-        public async Task<Operation> Delete(Guid id)
-        {
-            return Entities.Remove(id) ? Operation.Succes() : Operation.Failed();
-        }
+        public async Task<Operation> Delete(Guid id) => Entities.Remove(id) ? Operation.Succes() : Operation.Failed();
 
         /// <summary>
         /// Updates the specified updated entity.

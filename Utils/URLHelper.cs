@@ -78,20 +78,14 @@ namespace eLib.Utils
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static string UrlEncode(string text)
-        {
-            return Encode(text, FilesHelper.FilesHelper.UrlCharacters);
-        }
+        public static string UrlEncode(string text) => Encode(text, FilesHelper.FilesHelper.UrlCharacters);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static string UrlPathEncode(string text)
-        {
-            return Encode(text, FilesHelper.FilesHelper.UrlPathCharacters);
-        }
+        public static string UrlPathEncode(string text) => Encode(text, FilesHelper.FilesHelper.UrlPathCharacters);
 
         public static string HtmlEncode(string text)
         {
@@ -148,10 +142,7 @@ namespace eLib.Utils
             return url1 + "/" + url2;
         }
 
-        public static string CombineUrl(params string[] urls)
-        {
-            return urls.Aggregate(CombineUrl);
-        }
+        public static string CombineUrl(params string[] urls) => urls.Aggregate(CombineUrl);
 
         public static bool IsValidUrl(string url)
         {
@@ -207,10 +198,7 @@ namespace eLib.Utils
             return Regex.IsMatch(url.Trim(), pattern, RegexOptions.IgnoreCase);
         }
 
-        public static string AddSlash(string url, SlashType slashType)
-        {
-            return AddSlash(url, slashType, 1);
-        }
+        public static string AddSlash(string url, SlashType slashType) => AddSlash(url, slashType, 1);
 
         public static string AddSlash(string url, SlashType slashType, int count)
         {
@@ -307,10 +295,7 @@ namespace eLib.Utils
             return url;
         }
 
-        public static bool HasPrefix(string url)
-        {
-            return UrlPrefixes.Any(x => url.StartsWith(x, StringComparison.InvariantCultureIgnoreCase));
-        }
+        public static bool HasPrefix(string url) => UrlPrefixes.Any(x => url.StartsWith(x, StringComparison.InvariantCultureIgnoreCase));
 
         public static string RemovePrefixes(string url)
         {

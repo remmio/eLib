@@ -104,10 +104,7 @@ namespace eLib.FilesHelper
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static bool IsTextFile(string filePath)
-        {
-            return IsValidFile(filePath, typeof(TextFileExtensions));
-        }
+        public static bool IsTextFile(string filePath) => IsValidFile(filePath, typeof(TextFileExtensions));
 
         /// <summary>
         /// 

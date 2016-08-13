@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using eLib.Exceptions;
+using eLib.Properties;
 
 //using Exceptionless;
 
@@ -105,7 +106,7 @@ namespace eLib.Utils
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Cant save Logs " + e.AsMessage());
+                    Console.WriteLine(Resources.Logger_SaveLog_Cant_save_Logs_ + e.AsMessage());
                 }
             }
         }

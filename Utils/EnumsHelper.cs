@@ -27,7 +27,7 @@ namespace eLib.Utils
         {
             var nAttributes = eValue.GetType().GetField(eValue.ToString()).GetCustomAttributes(typeof(ResumeAttribute), false);
 
-            if (nAttributes.Any()) return ((ResumeAttribute)nAttributes.First()).Description;
+            if (nAttributes.Length > 0) return ((ResumeAttribute)nAttributes.First()).Description;
 
             var oTi = CultureInfo.CurrentCulture.TextInfo;
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));
@@ -40,7 +40,7 @@ namespace eLib.Utils
         {
             var nAttributes = eValue.GetType().GetField(eValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            if (nAttributes.Any()) return ((DescriptionAttribute) nAttributes.First()).Description;
+            if (nAttributes.Length > 0) return ((DescriptionAttribute) nAttributes.First()).Description;
 
             var oTi = CultureInfo.CurrentCulture.TextInfo;
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));
@@ -74,7 +74,7 @@ namespace eLib.Utils
         {
             var nAttributes = eValue.GetField(eValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            if (nAttributes.Any()) return ((DescriptionAttribute)nAttributes.First()).Description;
+            if (nAttributes.Length > 0) return ((DescriptionAttribute)nAttributes.First()).Description;
 
             var oTi = CultureInfo.CurrentCulture.TextInfo;
             return oTi.ToTitleCase(oTi.ToLower(eValue.ToString().Replace("_", " ")));

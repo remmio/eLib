@@ -30,20 +30,14 @@ namespace eLib.Crud
         /// Count of entities.
         /// </summary>
         /// <returns>The total number of entities.</returns>
-        public virtual int Count()
-        {
-            return _repository.Count;
-        }
+        public virtual int Count() => _repository.Count;
 
         /// <summary>
         /// Checks whether an entity with the specified unique identifier exists.
         /// </summary>
         /// <param name="id">The unique identifier.</param>
         /// <returns><c>true</c> if entity exists, <c>false</c> otherwise.</returns>
-        public virtual bool Exists(Guid id)
-        {
-            return _repository.Contains(id);
-        }
+        public virtual bool Exists(Guid id) => _repository.Contains(id);
 
         /// <summary>
         /// Gets the entity with the specified unique identifier.
@@ -65,19 +59,13 @@ namespace eLib.Crud
         /// Gets all entities.
         /// </summary>
         /// <returns>IEnumerable of entities.</returns>
-        public virtual IEnumerable<TEntity> GetAll()
-        {
-            return _repository.GetAll();
-        }
+        public virtual IEnumerable<TEntity> GetAll() => _repository.GetAll();
 
         /// <summary>
         /// Filters the entities based on the specified predicate.
         /// </summary>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IQueryable{TEntity}.</returns>
-        public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _repository.Get(predicate);
-        }
+        public virtual IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate) => _repository.Get(predicate);
     }
 }

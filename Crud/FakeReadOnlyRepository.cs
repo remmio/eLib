@@ -37,10 +37,7 @@ namespace eLib.Crud
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns><c>true</c> if the repository contains an entity with the specified id; otherwise, <c>false</c>.</returns>
-        public bool Contains(Guid id)
-        {
-            return _entities.ContainsKey(id);
-        }
+        public bool Contains(Guid id) => _entities.ContainsKey(id);
 
         /// <summary>
         /// Gets the entity with the specified id.
@@ -59,18 +56,12 @@ namespace eLib.Crud
         /// </summary>
         /// <param name="predicate">The predicate.</param>
         /// <returns>IQueryable{E}.</returns>
-        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-        {
-            return _entities.Values.AsQueryable().Where(predicate);
-        }
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate) => _entities.Values.AsQueryable().Where(predicate);
 
         /// <summary>
         /// Gets all entities.
         /// </summary>
         /// <returns>A list of entities.</returns>
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _entities.Values.ToList();
-        }
+        public IEnumerable<TEntity> GetAll() => _entities.Values.ToList();
     }
 }

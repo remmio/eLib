@@ -55,7 +55,7 @@ namespace eLib.Utils
 
             for (var i = 0; i < nomberOfNumToGenerate; i++)
             {
-                idOut = idOut + x.Next(0, 9);
+                idOut += x.Next(0, 9);
             }
             return idOut;
         }
@@ -63,11 +63,8 @@ namespace eLib.Utils
         public static string GetRandomKey(int length = 5, int count = 3, char separator = '-') 
             => Enumerable.Range(1, (length + 1) * count - 1).Aggregate("", (x, index) => x + (index % (length + 1) == 0 ? separator : GetRandomChar(FilesHelper.FilesHelper.Alphanumeric)));
 
-        private static char GetRandomChar(string chars)
-        {
-            return chars[Random(chars.Length - 1)];
-        }
-        
+        private static char GetRandomChar(string chars) => chars[Random(chars.Length - 1)];
+
         private static string GetRandomString(string chars, int length)
         {
             var sb = new StringBuilder();
@@ -77,17 +74,11 @@ namespace eLib.Utils
             }
             return sb.ToString();
         }
-        
-        public static string GetRandomNumber(int length)
-        {
-            return GetRandomString(FilesHelper.FilesHelper.Numbers, length);
-        }
-        
-        public static string GetRandomAlphanumeric(int length)
-        {
-            return GetRandomString(FilesHelper.FilesHelper.Alphanumeric, length);
-        }
-        
+
+        public static string GetRandomNumber(int length) => GetRandomString(FilesHelper.FilesHelper.Numbers, length);
+
+        public static string GetRandomAlphanumeric(int length) => GetRandomString(FilesHelper.FilesHelper.Alphanumeric, length);
+
         public static Color RandomColor()
         {
             var randomGen = new Random();

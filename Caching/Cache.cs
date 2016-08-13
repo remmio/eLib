@@ -151,10 +151,7 @@ namespace eLib.Caching
             }
         }
 
-        protected virtual bool IsExpired(TKey key, TValue value, DateTime lastValueAccess, TimeSpan maxAge)
-        {
-            return lastValueAccess + maxAge < _lastCacheAccess;
-        }
+        protected virtual bool IsExpired(TKey key, TValue value, DateTime lastValueAccess, TimeSpan maxAge) => lastValueAccess + maxAge < _lastCacheAccess;
 
         public List<TKey> GetKeys()
         {

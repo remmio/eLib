@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Security.Principal;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,6 +9,14 @@ namespace eLib.Tasks
 {
     public static class TaskExt
     {
+
+
+        //await TaskExt.RunAndFlowPrincipal(() =>
+        //    {
+        //        Thread.CurrentPrincipal = RequestContext.Principal = principal;
+        //        return 42;
+        //    });
+
         // flowing Thread.CurrentPrincipal
         public static FlowingAwaitable<TResult, IPrincipal> RunAndFlowPrincipal<TResult>(
             Func<TResult> func,
@@ -76,10 +81,7 @@ namespace eLib.Tasks
                 _restoreState = restoreState;
             }
 
-            public FlowingAwaitable<TResult, TState> GetAwaiter()
-            {
-                return this;
-            }
+            public FlowingAwaitable<TResult, TState> GetAwaiter() => this;
 
             public bool IsCompleted => _awaiter.IsCompleted;
 

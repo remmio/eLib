@@ -323,10 +323,7 @@ namespace eLib.Utils
         /// <summary>
         /// 
         /// </summary>
-        public static Image ResizeImage(Image img, Size size)
-        {
-            return ResizeImage(img, size.Width, size.Height);
-        }
+        public static Image ResizeImage(Image img, Size size) => ResizeImage(img, size.Width, size.Height);
 
         /// <summary>
         /// 
@@ -383,10 +380,7 @@ namespace eLib.Utils
         /// <summary>
         /// 
         /// </summary>
-        public static Image ResizeImageByPercentage(Image img, float percentage)
-        {
-            return ResizeImageByPercentage(img, percentage, percentage);
-        }
+        public static Image ResizeImageByPercentage(Image img, float percentage) => ResizeImageByPercentage(img, percentage, percentage);
 
         /// <summary>
         /// 
@@ -401,18 +395,12 @@ namespace eLib.Utils
         /// <summary>
         /// 
         /// </summary>
-        public static Image ResizeImage(Image img, Size size, bool allowEnlarge, bool centerImage = true)
-        {
-            return ResizeImage(img, size.Width, size.Height, allowEnlarge, centerImage);
-        }
+        public static Image ResizeImage(Image img, Size size, bool allowEnlarge, bool centerImage = true) => ResizeImage(img, size.Width, size.Height, allowEnlarge, centerImage);
 
         /// <summary>
         /// 
         /// </summary>
-        public static Image ResizeImage(Image img, int width, int height, bool allowEnlarge, bool centerImage = true)
-        {
-            return ResizeImage(img, width, height, allowEnlarge, centerImage, Color.Transparent);
-        }
+        public static Image ResizeImage(Image img, int width, int height, bool allowEnlarge, bool centerImage = true) => ResizeImage(img, width, height, allowEnlarge, centerImage, Color.Transparent);
 
         /// <summary>
         /// 
@@ -462,10 +450,7 @@ namespace eLib.Utils
         /// <summary>
         /// 
         /// </summary>
-        public static Image ResizeImageLimit(Image img, Size size)
-        {
-            return ResizeImageLimit(img, size.Width, size.Height);
-        }
+        public static Image ResizeImageLimit(Image img, Size size) => ResizeImageLimit(img, size.Width, size.Height);
 
         /// <summary>If image size bigger than "size" then resize it and keep aspect ratio else return image.</summary>
         public static Image ResizeImageLimit(Image img, int width, int height)

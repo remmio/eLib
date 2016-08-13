@@ -39,7 +39,7 @@ namespace eLib.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    var temp = new global::System.Resources.ResourceManager("eLib.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("eLib.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -175,6 +175,15 @@ namespace eLib.Properties {
         public static string last_names {
             get {
                 return ResourceManager.GetString("last_names", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cant save Logs .
+        /// </summary>
+        public static string Logger_SaveLog_Cant_save_Logs_ {
+            get {
+                return ResourceManager.GetString("Logger_SaveLog_Cant_save_Logs_", resourceCulture);
             }
         }
         

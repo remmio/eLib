@@ -153,10 +153,7 @@ namespace eLib.Utils
         /// </summary>
         /// <param name="span"></param>
         /// <returns></returns>
-        public static string ToReadableAgeString(this TimeSpan span)
-        {
-            return $"{span.Days/365.25:0}";
-        }
+        public static string ToReadableAgeString(this TimeSpan span) => $"{span.Days / 365.25:0}";
 
 
         /// <summary>
@@ -226,10 +223,7 @@ namespace eLib.Utils
         /// <param name="number"></param>
         /// <param name="digits"></param>
         /// <returns></returns>
-        public static string AddZeroes(int number, int digits = 2)
-        {
-            return number.ToString().PadLeft(digits, '0');
-        }
+        public static string AddZeroes(int number, int digits = 2) => number.ToString().PadLeft(digits, '0');
 
         /// <summary>
         ///  foreach(DateTime day in EachDay(StartDate, EndDate))
@@ -299,18 +293,12 @@ namespace eLib.Utils
         /// <summary>
         /// Increases supplied <see cref="DateTime"/> for 7 days ie returns the Next Week.
         /// </summary>
-        public static DateTime WeekAfter(this DateTime start)
-        {
-            return start.AddDays(7);
-        }
+        public static DateTime WeekAfter(this DateTime start) => start.AddDays(7);
 
         /// <summary>
         /// Decreases supplied <see cref="DateTime"/> for 7 days ie returns the Previous Week.
         /// </summary>
-        public static DateTime WeekEarlier(this DateTime start)
-        {
-            return start.AddDays(-7);
-        }
+        public static DateTime WeekEarlier(this DateTime start) => start.AddDays(-7);
 
         /// <summary>
         /// Returns first next occurrence of specified <see cref="DayOfWeek"/>.
@@ -334,20 +322,14 @@ namespace eLib.Utils
         /// </summary>
         /// <param name="date">A date from the month we want to get the first day.</param>
         /// <returns>A DateTime representing the first day of the month.</returns>
-        public static DateTime FirstDayOfTheMonth(this DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, 1);
-        }
+        public static DateTime FirstDayOfTheMonth(this DateTime date) => new DateTime(date.Year, date.Month, 1);
 
         /// <summary>
         /// Retrives the last day of the month of the <paramref name="date"/>.
         /// </summary>
         /// <param name="date">A date from the month we want to get the last day.</param>
         /// <returns>A DateTime representing the last day of the month.</returns>
-        public static DateTime LastDayOfTheMonth(this DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
-        }
+        public static DateTime LastDayOfTheMonth(this DateTime date) => new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
 
         /// <summary>
         /// Retrives the last day of the week that occourred since <paramref name="date"/>.
@@ -407,25 +389,13 @@ namespace eLib.Utils
             return firstDayOfTheMonth.NextDayOfWeek(dayOfweek);
         }
 
-        public static DateTime SetTime(this DateTime date, int hour)
-        {
-            return date.SetTime(hour, 0, 0, 0);
-        }
+        public static DateTime SetTime(this DateTime date, int hour) => date.SetTime(hour, 0, 0, 0);
 
-        public static DateTime SetTime(this DateTime date, int hour, int minute)
-        {
-            return date.SetTime(hour, minute, 0, 0);
-        }
+        public static DateTime SetTime(this DateTime date, int hour, int minute) => date.SetTime(hour, minute, 0, 0);
 
-        public static DateTime SetTime(this DateTime date, int hour, int minute, int second)
-        {
-            return date.SetTime(hour, minute, second, 0);
-        }
+        public static DateTime SetTime(this DateTime date, int hour, int minute, int second) => date.SetTime(hour, minute, second, 0);
 
-        public static DateTime SetTime(this DateTime date, int hour, int minute, int second, int millisecond)
-        {
-            return new DateTime(date.Year, date.Month, date.Day, hour, minute, second, millisecond);
-        }
+        public static DateTime SetTime(this DateTime date, int hour, int minute, int second, int millisecond) => new DateTime(date.Year, date.Month, date.Day, hour, minute, second, millisecond);
 
         #endregion
 
@@ -437,27 +407,15 @@ namespace eLib.Utils
             return Convert.ToInt32(utc);
         }
 
-        public static int ToEpochOffset(this DateTime date, int timestamp)
-        {
-            return timestamp - date.ToEpoch();
-        }
+        public static int ToEpochOffset(this DateTime date, int timestamp) => timestamp - date.ToEpoch();
 
-        public static int ToEpoch(this DateTime date, int offset)
-        {
-            return offset + date.ToEpoch();
-        }
+        public static int ToEpoch(this DateTime date, int offset) => offset + date.ToEpoch();
 
         private const long EpochTicks = 621355968000000000;
 
-        public static DateTime ToDateTime(this int secondsSinceEpoch)
-        {
-            return new DateTime(EpochTicks + secondsSinceEpoch*TimeSpan.TicksPerSecond);
-        }
+        public static DateTime ToDateTime(this int secondsSinceEpoch) => new DateTime(EpochTicks + secondsSinceEpoch * TimeSpan.TicksPerSecond);
 
-        public static DateTime ToDateTime(this double milliSecondsSinceEpoch)
-        {
-            return new DateTime(EpochTicks + (long) milliSecondsSinceEpoch*TimeSpan.TicksPerMillisecond);
-        }
+        public static DateTime ToDateTime(this double milliSecondsSinceEpoch) => new DateTime(EpochTicks + (long)milliSecondsSinceEpoch * TimeSpan.TicksPerMillisecond);
 
         public static DateTime ChangeMillisecond(this DateTime date, int millisecond)
         {
@@ -510,10 +468,7 @@ namespace eLib.Utils
             return date.AddMonths(month - date.Month);
         }
 
-        public static DateTime ChangeYear(this DateTime date, int year)
-        {
-            return date.AddYears(year - date.Year);
-        }
+        public static DateTime ChangeYear(this DateTime date, int year) => date.AddYears(year - date.Year);
 
         public static DateTime Change(this DateTime date, int? year = null, int? month = null, int? day = null, int? hour = null, int? minute = null, int? second = null)
         {
@@ -535,45 +490,21 @@ namespace eLib.Utils
             return result;
         }
 
-        public static DateTime StartOfSecond(this DateTime date)
-        {
-            return date.Floor(TimeSpan.FromSeconds(1));
-        }
+        public static DateTime StartOfSecond(this DateTime date) => date.Floor(TimeSpan.FromSeconds(1));
 
-        public static DateTime EndOfSecond(this DateTime date)
-        {
-            return date.StartOfSecond().AddSeconds(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfSecond(this DateTime date) => date.StartOfSecond().AddSeconds(1).SubtractMilliseconds(1);
 
-        public static DateTime StartOfMinute(this DateTime date)
-        {
-            return date.Floor(TimeSpan.FromMinutes(1));
-        }
+        public static DateTime StartOfMinute(this DateTime date) => date.Floor(TimeSpan.FromMinutes(1));
 
-        public static DateTime EndOfMinute(this DateTime date)
-        {
-            return date.StartOfMinute().AddMinutes(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfMinute(this DateTime date) => date.StartOfMinute().AddMinutes(1).SubtractMilliseconds(1);
 
-        public static DateTime StartOfHour(this DateTime date)
-        {
-            return date.Floor(TimeSpan.FromHours(1));
-        }
+        public static DateTime StartOfHour(this DateTime date) => date.Floor(TimeSpan.FromHours(1));
 
-        public static DateTime EndOfHour(this DateTime date)
-        {
-            return date.StartOfHour().AddHours(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfHour(this DateTime date) => date.StartOfHour().AddHours(1).SubtractMilliseconds(1);
 
-        public static DateTime EndOfDay(this DateTime date)
-        {
-            return date.Date.AddDays(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfDay(this DateTime date) => date.Date.AddDays(1).SubtractMilliseconds(1);
 
-        public static DateTime StartOfDay(this DateTime date)
-        {
-            return date.Date;
-        }
+        public static DateTime StartOfDay(this DateTime date) => date.Date;
 
         public static DateTime StartOfWeek(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
         {
@@ -584,40 +515,19 @@ namespace eLib.Utils
             return date.Date.AddDays(-1*diff);
         }
 
-        public static DateTime EndOfWeek(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
-        {
-            return date.StartOfWeek(startOfWeek).AddWeeks(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfWeek(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday) => date.StartOfWeek(startOfWeek).AddWeeks(1).SubtractMilliseconds(1);
 
-        public static DateTime StartOfMonth(this DateTime date)
-        {
-            return date.Date.AddDays(1 - date.Date.Day);
-        }
+        public static DateTime StartOfMonth(this DateTime date) => date.Date.AddDays(1 - date.Date.Day);
 
-        public static DateTime EndOfMonth(this DateTime date)
-        {
-            return date.StartOfMonth().AddMonths(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfMonth(this DateTime date) => date.StartOfMonth().AddMonths(1).SubtractMilliseconds(1);
 
-        public static DateTime StartOfYear(this DateTime date)
-        {
-            return date.Date.AddDays(1 - date.Date.Day).AddMonths(1 - date.Date.Month);
-        }
+        public static DateTime StartOfYear(this DateTime date) => date.Date.AddDays(1 - date.Date.Day).AddMonths(1 - date.Date.Month);
 
-        public static DateTime EndOfYear(this DateTime date)
-        {
-            return date.StartOfYear().AddYears(1).SubtractMilliseconds(1);
-        }
+        public static DateTime EndOfYear(this DateTime date) => date.StartOfYear().AddYears(1).SubtractMilliseconds(1);
 
-        public static DateTime Floor(this DateTime date, TimeSpan interval)
-        {
-            return date.AddTicks(-(date.Ticks%interval.Ticks));
-        }
+        public static DateTime Floor(this DateTime date, TimeSpan interval) => date.AddTicks(-(date.Ticks % interval.Ticks));
 
-        public static DateTime Ceiling(this DateTime date, TimeSpan interval)
-        {
-            return date.AddTicks(interval.Ticks - date.Ticks%interval.Ticks);
-        }
+        public static DateTime Ceiling(this DateTime date, TimeSpan interval) => date.AddTicks(interval.Ticks - date.Ticks % interval.Ticks);
 
         public static DateTime Round(this DateTime date, TimeSpan roundingInterval)
         {
@@ -625,75 +535,33 @@ namespace eLib.Utils
             return date.AddTicks(halfIntervalTicks - (date.Ticks + halfIntervalTicks)%roundingInterval.Ticks);
         }
 
-        public static DateTime NextSecond(this DateTime date)
-        {
-            return date.AddSeconds(1);
-        }
+        public static DateTime NextSecond(this DateTime date) => date.AddSeconds(1);
 
-        public static DateTime LastSecond(this DateTime date)
-        {
-            return date.SubtractSeconds(1);
-        }
+        public static DateTime LastSecond(this DateTime date) => date.SubtractSeconds(1);
 
-        public static DateTime NextMinute(this DateTime date)
-        {
-            return date.AddMinutes(1);
-        }
+        public static DateTime NextMinute(this DateTime date) => date.AddMinutes(1);
 
-        public static DateTime LastMinute(this DateTime date)
-        {
-            return date.SubtractMinutes(1);
-        }
+        public static DateTime LastMinute(this DateTime date) => date.SubtractMinutes(1);
 
-        public static DateTime NextHour(this DateTime date)
-        {
-            return date.AddHours(1);
-        }
+        public static DateTime NextHour(this DateTime date) => date.AddHours(1);
 
-        public static DateTime LastHour(this DateTime date)
-        {
-            return date.SubtractHours(1);
-        }
+        public static DateTime LastHour(this DateTime date) => date.SubtractHours(1);
 
-        public static DateTime NextDay(this DateTime date)
-        {
-            return date.AddDays(1);
-        }
+        public static DateTime NextDay(this DateTime date) => date.AddDays(1);
 
-        public static DateTime LastDay(this DateTime date)
-        {
-            return date.SubtractDays(1);
-        }
+        public static DateTime LastDay(this DateTime date) => date.SubtractDays(1);
 
-        public static DateTime NextWeek(this DateTime date)
-        {
-            return date.AddWeeks(1);
-        }
+        public static DateTime NextWeek(this DateTime date) => date.AddWeeks(1);
 
-        public static DateTime LastWeek(this DateTime date)
-        {
-            return date.SubtractWeeks(1);
-        }
+        public static DateTime LastWeek(this DateTime date) => date.SubtractWeeks(1);
 
-        public static DateTime NextMonth(this DateTime date)
-        {
-            return date.AddMonths(1);
-        }
+        public static DateTime NextMonth(this DateTime date) => date.AddMonths(1);
 
-        public static DateTime LastMonth(this DateTime date)
-        {
-            return date.SubtractMonths(1);
-        }
+        public static DateTime LastMonth(this DateTime date) => date.SubtractMonths(1);
 
-        public static DateTime NextYear(this DateTime date)
-        {
-            return date.AddYears(1);
-        }
+        public static DateTime NextYear(this DateTime date) => date.AddYears(1);
 
-        public static DateTime LastYear(this DateTime date)
-        {
-            return date.SubtractYears(1);
-        }
+        public static DateTime LastYear(this DateTime date) => date.SubtractYears(1);
 
         public static DateTime SubtractTicks(this DateTime date, long value)
         {
@@ -743,10 +611,7 @@ namespace eLib.Utils
             return date.AddDays(value*-1);
         }
 
-        public static DateTime AddWeeks(this DateTime date, double value)
-        {
-            return date.AddDays(value*7);
-        }
+        public static DateTime AddWeeks(this DateTime date, double value) => date.AddDays(value * 7);
 
         public static DateTime SubtractWeeks(this DateTime date, double value)
         {

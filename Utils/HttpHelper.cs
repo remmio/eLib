@@ -16,9 +16,9 @@ namespace eLib.Utils
         public static Uri BaseUri { get; set; }
         public static string Token { get; set; }
 
-      
-        public static async Task<T> HttpGet<T>(string path) 
-        {           
+
+        public static async Task<T> HttpGet<T>(string path)
+        {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = BaseUri;
@@ -32,7 +32,7 @@ namespace eLib.Utils
                 if (!response.IsSuccessStatusCode)
                     throw new ApiException(response.StatusCode, await response.Content.ReadAsStringAsync(), response.ReasonPhrase);
                 return await response.Content.ReadAsAsync<T>();
-            }           
+            }
         }
 
         public static async Task HttpGet(string path)
@@ -108,14 +108,14 @@ namespace eLib.Utils
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Token);
 
-               var jObject = JsonConvert.SerializeObject(obj, Formatting.None,
-                    new JsonSerializerSettings
-                    {
-                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                        DateFormatHandling = DateFormatHandling.IsoDateFormat,
-                        PreserveReferencesHandling = PreserveReferencesHandling.None,
-                        NullValueHandling = NullValueHandling.Ignore                        
-                    });
+                var jObject = JsonConvert.SerializeObject(obj, Formatting.None,
+                     new JsonSerializerSettings
+                     {
+                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                         DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                         PreserveReferencesHandling = PreserveReferencesHandling.None,
+                         NullValueHandling = NullValueHandling.Ignore
+                     });
 
                 var response = await client.PutAsync(objectPath, new StringContent(jObject, Encoding.UTF8, "application/json"));
                 if (!response.IsSuccessStatusCode)
@@ -124,7 +124,7 @@ namespace eLib.Utils
             }
         }
 
-        public static async Task<Operation> HttpDelete(string objectPath)  
+        public static async Task<Operation> HttpDelete(string objectPath)
         {
             using (var client = new HttpClient())
             {
@@ -161,14 +161,14 @@ namespace eLib.Utils
                     if (rememberMe)
                         WebCredentials.Set(tokenModel.AccessToken);
 
-                    return Succes(tokenModel.AccessToken);                    
+                    return Succes(tokenModel.AccessToken);
                 }
 
                 Token = string.Empty;
                 return Failed(responseMessage.ReasonPhrase);
             }
         }
-            
+
         public static async Task<Operation> HttpLogOut(string path)
         {
             using (var client = new HttpClient())

@@ -24,20 +24,11 @@ namespace eLib.Crud
         }
 
 
-        public async Task<Operation> Add(T entity)
-        {
-            return await HttpHelper.HttpAdd(entity, _path);
-        }
+        public async Task<Operation> Add(T entity) => await HttpHelper.HttpAdd(entity, _path);
 
-        public async Task<Operation> Update(T entity)
-        {
-            return await HttpHelper.HttpUpdate(entity, _path);
-        }
+        public async Task<Operation> Update(T entity) => await HttpHelper.HttpUpdate(entity, _path);
 
-        public async Task<Operation> Delete(Guid id)
-        {
-            return await HttpHelper.HttpDelete(_path + "/" + id);
-        }
+        public async Task<Operation> Delete(Guid id) => await HttpHelper.HttpDelete(_path + "/" + id);
 
         public async Task<T> ByGuid(Guid id) => await HttpHelper.HttpGet<T>(_path + "/" + id);
 

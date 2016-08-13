@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using eLib.Exceptions;
+using Exceptionless;
 
 namespace eLib.Utils
 {
@@ -72,7 +74,8 @@ namespace eLib.Utils
 
         public static void Log(this Exception exception, bool save = false)
         {
-            Log(exception.ToString());
+            Log(exception.MostInner().ToString());
+            exception.ToExceptionless().Submit();
             if (save)
                 SaveLog();
         }

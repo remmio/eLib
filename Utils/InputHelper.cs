@@ -108,11 +108,8 @@ namespace eLib.Utils {
         /// GetCurrencySymbol
         /// </summary>
         /// <returns></returns>
-        public static string GetCurrencySymbol()
-        {
-            return RegionInfo.CurrentRegion.ISOCurrencySymbol;
-        }
-        
+        public static string GetCurrencySymbol() => RegionInfo.CurrentRegion.ISOCurrencySymbol;
+
 
     }
 }

@@ -103,15 +103,9 @@ namespace eLib.Crud
             return result;
         }
 
-        public virtual async Task<TEntity> ByGuid(Guid id)
-        {
-            return await _repository.ByGuid(id);             
-        }
+        public virtual async Task<TEntity> ByGuid(Guid id) => await _repository.ByGuid(id);
 
-        public virtual async Task<IEnumerable<TEntity>> GetAll()
-        {
-            return await _repository.GetAll();
-        }
+        public virtual async Task<IEnumerable<TEntity>> GetAll() => await _repository.GetAll();
 
         #endregion
 

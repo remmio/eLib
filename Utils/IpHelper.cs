@@ -30,10 +30,7 @@ namespace eLib.Utils
                 .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)?.ToString();
         }
 
-        public static bool IsOnline()
-        {
-            return NetworkInterface.GetIsNetworkAvailable();
-        }
+        public static bool IsOnline() => NetworkInterface.GetIsNetworkAvailable();
 
         internal static string GetLocalIPv4(NetworkInterfaceType type = NetworkInterfaceType.Ethernet)
         {

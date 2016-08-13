@@ -190,4 +190,7 @@
   <data name="AccesDenied_You_are_not_authorized_to_do_this_operation_" xml:space="preserve">
     <value>You are not authorized to do this operation.</value>
   </data>
+  <data name="Logger_SaveLog_Cant_save_Logs_" xml:space="preserve">
+    <value>Cant save Logs </value>
+  </data>
 </root>

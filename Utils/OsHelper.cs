@@ -16,66 +16,42 @@ namespace eLib.Utils
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindowsXp()
-        {
-            return OsVersion.Major == 5 && OsVersion.Minor == 1;
-        }
+        public static bool IsWindowsXp() => OsVersion.Major == 5 && OsVersion.Minor == 1;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindowsXpOrGreater()
-        {
-            return (OsVersion.Major == 5 && OsVersion.Minor >= 1) || OsVersion.Major > 5;
-        }
+        public static bool IsWindowsXpOrGreater() => (OsVersion.Major == 5 && OsVersion.Minor >= 1) || OsVersion.Major > 5;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindowsVista()
-        {
-            return OsVersion.Major == 6;
-        }
+        public static bool IsWindowsVista() => OsVersion.Major == 6;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindowsVistaOrGreater()
-        {
-            return OsVersion.Major >= 6;
-        }
+        public static bool IsWindowsVistaOrGreater() => OsVersion.Major >= 6;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindows7()
-        {
-            return OsVersion.Major == 6 && OsVersion.Minor == 1;
-        }
+        public static bool IsWindows7() => OsVersion.Major == 6 && OsVersion.Minor == 1;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindows7OrGreater()
-        {
-            return (OsVersion.Major == 6 && OsVersion.Minor >= 1) || OsVersion.Major > 6;
-        }
+        public static bool IsWindows7OrGreater() => (OsVersion.Major == 6 && OsVersion.Minor >= 1) || OsVersion.Major > 6;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindows8()
-        {
-            return OsVersion.Major == 6 && OsVersion.Minor == 2;
-        }
+        public static bool IsWindows8() => OsVersion.Major == 6 && OsVersion.Minor == 2;
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool IsWindows8OrGreater()
-        {
-            return (OsVersion.Major == 6 && OsVersion.Minor >= 2) || OsVersion.Major > 6;
-        }
+        public static bool IsWindows8OrGreater() => (OsVersion.Major == 6 && OsVersion.Minor >= 2) || OsVersion.Major > 6;
 
         /// <summary>
         /// 
