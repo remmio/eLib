@@ -38,7 +38,7 @@ namespace eLib.Security
                     Target = key,
                     Password = value,
                     Type = CredentialType.DomainPassword,
-                    PersistanceType = PersistanceType.Session,
+                    PersistanceType = PersistanceType.Session
                 }.Save();
             }
             catch (Exception exception)

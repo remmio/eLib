@@ -4,7 +4,9 @@
 // Project-level suppressions either have no target or are given 
 // a specific target and scoped to a namespace, type, member, etc.
 
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("General", "RCS1046:Asynchronous method name should end with 'Async'.", 
+using System.Diagnostics.CodeAnalysis;
+
+[assembly: SuppressMessage("General", "RCS1046:Asynchronous method name should end with 'Async'.", 
     Justification = "<Pending>")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("General", "RCS1060:Declare each type in separate file.", Justification = "<Pending>")]
+[assembly: SuppressMessage("General", "RCS1060:Declare each type in separate file.", Justification = "<Pending>")]
 
