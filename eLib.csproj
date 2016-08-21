@@ -104,7 +104,10 @@
   <ItemGroup>
     <Compile Include="AOP\Exception.cs" />
     <Compile Include="AOP\Timing.cs" />
-    <Compile Include="Attributes\Attributes.cs" />
+    <Compile Include="AOP\Attributes\Attributes.cs" />
+    <Compile Include="Attributes\Entity\EntityAttribute.cs" />
+    <Compile Include="Attributes\Enums\AttributeType.cs" />
+    <Compile Include="Attributes\IHaveAttributes.cs" />
     <Compile Include="Caching\AutoExpiryCache.cs" />
     <Compile Include="Caching\MemoryCache.cs" />
     <Compile Include="Caching\SizeLimitedCache.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Crud\Test.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\BindableBase.cs" />
+    <Compile Include="Entity\Photo.cs" />
     <Compile Include="Enums\DemandStatut.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\Enums.cs" />

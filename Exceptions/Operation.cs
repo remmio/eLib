@@ -64,7 +64,7 @@ namespace eLib.Exceptions
             
         public static Operation AccesDenied(string message = default (string))
         {
-            throw new ApiException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden");
+            throw new UxException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden");
         }
 
         public static Operation Denied(string message = default(string))
@@ -73,7 +73,7 @@ namespace eLib.Exceptions
             {
                 Success = false,
                 Message = message,
-                Exception = new ApiException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden")
+                Exception = new UxException(HttpStatusCode.Forbidden, Resources.AccesDenied_You_are_not_authorized_to_do_this_operation_, "Forbidden")
             };
         }
 
@@ -117,10 +117,12 @@ namespace eLib.Exceptions
                 }
                 return ((HttpResponseException) exception).Response.ReasonPhrase;
             }
-            if (exception is ApiException)
+            if (exception is UxException)
             {
-                switch (((ApiException)exception).StatusCode)
+                switch (((UxException)exception).StatusCode)
                 {
+                    case HttpStatusCode.BadRequest:
+                        return ((UxException)exception).Message;
                     case HttpStatusCode.GatewayTimeout:
                         return "The connection timed out";
                     case HttpStatusCode.InternalServerError:
@@ -134,7 +136,7 @@ namespace eLib.Exceptions
                     case HttpStatusCode.NotFound:
                         return "The requested resource is not found, please update the program";
                 }
-                return ((ApiException)exception).ReasonPhrase;
+                return ((UxException)exception).ReasonPhrase;
             }
 
             return exception.MostInner().Message;

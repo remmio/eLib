@@ -8,23 +8,36 @@ namespace eLib.Exceptions
     /// </summary>
     public class UxException : Exception
     {
-        /// <summary>
-        /// Exception Concernant des donnees invalides
-        /// </summary>
-        public UxException() { }
+        public HttpStatusCode StatusCode { get; set; }
+        public string ReasonPhrase { get; set; }
+        public override string Message { get; }
 
-        /// <summary>
-        /// Exception Concernant des donnees invalides
-        /// </summary>
-        /// <param name="message"></param>
-        public UxException(string message) : base(message) { }
 
-        /// <summary>
-        /// Exception Concernant des donnees invalides
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="inner"></param>
-        public UxException(string message, Exception inner) : base(message, inner) { }
+        public UxException()
+        {
+            StatusCode = HttpStatusCode.BadRequest;
+        }
+
+        public UxException(string message) : base(message)
+        {
+            StatusCode = HttpStatusCode.BadRequest;
+            Message = message;
+        }
+
+        public UxException(string message, Exception inner) : base(message, inner)
+        {
+            StatusCode = HttpStatusCode.BadRequest;
+            Message = message;
+        }
+
+        public UxException(HttpStatusCode statusCode, string message = default(string), string reasonPhrase = default(string)) : base(reasonPhrase)
+        {
+            if (!string.IsNullOrEmpty(message))
+                Message = message;
+
+            StatusCode = statusCode;
+            ReasonPhrase = reasonPhrase;
+        }
 
         public static UxException NotFound(Type obj) => new UxException(obj.Name + " Not Found");
     }
@@ -49,27 +62,5 @@ namespace eLib.Exceptions
         public LicenceException(string message, Exception inner) : base(message, inner) { }
     }
 
-    public class ApiException : UxException
-    {
-        public HttpStatusCode StatusCode { get; set; }
-        public string ReasonPhrase { get; set; }
-        public override string Message { get; }
-
-        public ApiException() { }
-
-        public ApiException(string message) : base(message)
-        {
-        }
-
-        public ApiException(string message, Exception inner) : base(message, inner) { }
-
-        public ApiException(HttpStatusCode statusCode, string message = default(string), string reasonPhrase = default(string)) : base(reasonPhrase)
-        {
-            if (!string.IsNullOrEmpty(message))
-                Message = message;
-
-            StatusCode   = statusCode;
-            ReasonPhrase = reasonPhrase;
-        }
-    }
+ 
 }

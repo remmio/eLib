@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace eLib.Attributes
+namespace eLib.AOP.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class NotTested : Attribute

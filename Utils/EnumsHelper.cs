@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using eLib.Attributes;
+using eLib.AOP.Attributes;
 
 namespace eLib.Utils
 {
